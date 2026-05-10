@@ -1,0 +1,57 @@
+import type { ComponentType } from 'react'
+
+export interface PreviewModule {
+  Preview: ComponentType
+  code: string
+}
+
+// Lazy-loaded previews — one file per component
+export const PREVIEWS: Record<string, () => Promise<PreviewModule>> = {
+  'accordion':       () => import('./accordion'),
+  'alert':           () => import('./alert'),
+  'alert-dialog':    () => import('./alert-dialog'),
+  'aspect-ratio':    () => import('./aspect-ratio'),
+  'avatar':          () => import('./avatar'),
+  'badge':           () => import('./badge'),
+  'breadcrumb':      () => import('./breadcrumb'),
+  'button':          () => import('./button'),
+  'calendar':        () => import('./calendar'),
+  'card':            () => import('./card'),
+  'carousel':        () => import('./carousel'),
+  'chart':           () => import('./chart'),
+  'checkbox':        () => import('./checkbox'),
+  'collapsible':     () => import('./collapsible'),
+  'command':         () => import('./command'),
+  'context-menu':    () => import('./context-menu'),
+  'dialog':          () => import('./dialog'),
+  'drawer':          () => import('./drawer'),
+  'dropdown-menu':   () => import('./dropdown-menu'),
+  'form':            () => import('./form'),
+  'hover-card':      () => import('./hover-card'),
+  'input':           () => import('./input'),
+  'input-group':     () => import('./input-group'),
+  'input-otp':       () => import('./input-otp'),
+  'label':           () => import('./label'),
+  'menubar':         () => import('./menubar'),
+  'navigation-menu': () => import('./navigation-menu'),
+  'pagination':      () => import('./pagination'),
+  'popover':         () => import('./popover'),
+  'progress':        () => import('./progress'),
+  'radio-group':     () => import('./radio-group'),
+  'resizable':       () => import('./resizable'),
+  'scroll-area':     () => import('./scroll-area'),
+  'select':          () => import('./select'),
+  'separator':       () => import('./separator'),
+  'sheet':           () => import('./sheet'),
+  'sidebar':         () => import('./sidebar'),
+  'skeleton':        () => import('./skeleton'),
+  'slider':          () => import('./slider'),
+  'sonner':          () => import('./sonner'),
+  'switch':          () => import('./switch'),
+  'table':           () => import('./table'),
+  'tabs':            () => import('./tabs'),
+  'textarea':        () => import('./textarea'),
+  'toggle':          () => import('./toggle'),
+  'toggle-group':    () => import('./toggle-group'),
+  'tooltip':         () => import('./tooltip'),
+}
