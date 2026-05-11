@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Input</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Campo de texto de línea única. Soporta tamaños sm/md/lg, estados semánticos e íconos leading/trailing via named slots.</p>
+        <x-ui.typography as="h1" class="text-3xl">Input</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Campo de texto de línea única. Soporta tamaños sm/md/lg, estados semánticos e íconos leading/trailing via named slots.</x-ui.typography>
     </div>
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="space-y-3">
             <x-ui.form-field>
                 <x-ui.label>Small (sm)</x-ui.label>
@@ -29,7 +29,7 @@
 
     {{-- Tipos nativos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tipos HTML</h2>
+        <x-ui.typography as="section-label">Tipos HTML</x-ui.typography>
         <div class="space-y-3">
             <x-ui.input type="text"     placeholder="type=text" />
             <x-ui.input type="email"    placeholder="type=email" />
@@ -43,7 +43,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="space-y-4">
             <x-ui.form-field state="destructive" message="Este campo es requerido.">
                 <x-ui.label state="destructive">Email</x-ui.label>
@@ -71,7 +71,7 @@
 
     {{-- Disabled --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Deshabilitado</h2>
+        <x-ui.typography as="section-label">Deshabilitado</x-ui.typography>
         <x-ui.form-field>
             <x-ui.label>Campo deshabilitado</x-ui.label>
             <x-ui.input disabled value="No editable" />
@@ -82,7 +82,7 @@
 
     {{-- Con íconos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con íconos</h2>
+        <x-ui.typography as="section-label">Con íconos</x-ui.typography>
         <div class="space-y-3 max-w-sm">
 
             {{-- Leading: búsqueda --}}
@@ -166,7 +166,7 @@
 
     {{-- Íconos con tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Íconos en todos los tamaños</h2>
+        <x-ui.typography as="section-label">Íconos en todos los tamaños</x-ui.typography>
         <div class="space-y-3 max-w-sm">
             <x-ui.input size="sm" placeholder="Buscar en sm...">
                 <x-slot:leading>
@@ -196,8 +196,8 @@
 
     {{-- Íconos + estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Íconos con estados semánticos</h2>
-        <p class="text-sm text-muted-foreground">El ícono adopta el color del estado automáticamente.</p>
+        <x-ui.typography as="section-label">Íconos con estados semánticos</x-ui.typography>
+        <x-ui.typography as="muted">El ícono adopta el color del estado automáticamente.</x-ui.typography>
 
         @php
         $mailIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="size-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>';

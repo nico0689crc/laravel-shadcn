@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Chart</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Wrapper sobre Chart.js. Soporta line, bar, pie, doughnut, radar y polarArea. Los datos y opciones se pasan como props PHP y se pasan a Chart.js via Alpine.</p>
+        <x-ui.typography as="h1" class="text-3xl">Chart</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Wrapper sobre Chart.js. Soporta line, bar, pie, doughnut, radar y polarArea. Los datos y opciones se pasan como props PHP y se pasan a Chart.js via Alpine.</x-ui.typography>
     </div>
 
     {{-- Line --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Line — ventas mensuales</h2>
+        <x-ui.typography as="section-label">Line — ventas mensuales</x-ui.typography>
         <x-ui.card>
             <x-ui.card.content class="pt-6">
                 <x-ui.chart
@@ -44,7 +44,7 @@
 
     {{-- Bar --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Bar — ingresos por canal</h2>
+        <x-ui.typography as="section-label">Bar — ingresos por canal</x-ui.typography>
         <x-ui.card>
             <x-ui.card.content class="pt-6">
                 <x-ui.chart
@@ -78,7 +78,7 @@
 
     {{-- Pie + Doughnut lado a lado --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Pie & Doughnut — distribución</h2>
+        <x-ui.typography as="section-label">Pie & Doughnut — distribución</x-ui.typography>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <x-ui.card>
                 <x-ui.card.header>
@@ -137,7 +137,7 @@
 
     {{-- Bar horizontal --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Bar horizontal — top productos</h2>
+        <x-ui.typography as="section-label">Bar horizontal — top productos</x-ui.typography>
         <x-ui.card>
             <x-ui.card.content class="pt-6">
                 <x-ui.chart
@@ -176,7 +176,7 @@
 
     {{-- Stacked bar --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Bar apilado — desglose de costos</h2>
+        <x-ui.typography as="section-label">Bar apilado — desglose de costos</x-ui.typography>
         <x-ui.card>
             <x-ui.card.content class="pt-6">
                 <x-ui.chart
@@ -219,7 +219,7 @@
 
     {{-- Radar + PolarArea lado a lado --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Radar & PolarArea</h2>
+        <x-ui.typography as="section-label">Radar & PolarArea</x-ui.typography>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <x-ui.card>
                 <x-ui.card.header>
@@ -303,7 +303,7 @@
 
     {{-- Line sin relleno, múltiples series --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Line — métricas de retención semanal</h2>
+        <x-ui.typography as="section-label">Line — métricas de retención semanal</x-ui.typography>
         <x-ui.card>
             <x-ui.card.content class="pt-6">
                 <x-ui.chart

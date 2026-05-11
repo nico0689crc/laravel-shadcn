@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Drawer</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Panel deslizable desde el borde inferior. Ideal para mobile. Comparte sub-componentes con Dialog y Sheet. Se cierra con el handle, la overlay o Escape.</p>
+        <x-ui.typography as="h1" class="text-3xl">Drawer</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Panel deslizable desde el borde inferior. Ideal para mobile. Comparte sub-componentes con Dialog y Sheet. Se cierra con el handle, la overlay o Escape.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.drawer>
             <x-slot:trigger>
                 <x-ui.button variant="outline">Abrir Drawer</x-ui.button>
@@ -18,7 +18,7 @@
                 <x-ui.drawer.description>Deslizá hacia abajo o tocá el handle para cerrar.</x-ui.drawer.description>
             </x-ui.drawer.header>
             <x-ui.drawer.content>
-                <p class="text-sm text-muted-foreground">Contenido del drawer. Puede scrollear si el contenido supera la altura máxima.</p>
+                <x-ui.typography as="muted">Contenido del drawer. Puede scrollear si el contenido supera la altura máxima.</x-ui.typography>
             </x-ui.drawer.content>
             <x-ui.drawer.footer>
                 <x-ui.button>Confirmar</x-ui.button>
@@ -31,7 +31,7 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             @foreach(['sm' => 'Small (40vh)', 'md' => 'Medium (60vh)', 'lg' => 'Large (85vh)', 'auto' => 'Auto'] as $size => $label)
                 <x-ui.drawer size="{{ $size }}">
@@ -43,7 +43,7 @@
                         <x-ui.drawer.description>size="{{ $size }}"</x-ui.drawer.description>
                     </x-ui.drawer.header>
                     <x-ui.drawer.content>
-                        <p class="text-sm text-muted-foreground">Contenido del drawer con size="{{ $size }}".</p>
+                        <x-ui.typography as="muted">Contenido del drawer con size="{{ $size }}".</x-ui.typography>
                     </x-ui.drawer.content>
                 </x-ui.drawer>
             @endforeach
@@ -54,7 +54,7 @@
 
     {{-- En contexto — carrito --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — resumen de carrito</h2>
+        <x-ui.typography as="section-label">En contexto — resumen de carrito</x-ui.typography>
         <x-ui.drawer size="lg">
             <x-slot:trigger>
                 <x-ui.button>
@@ -77,8 +77,8 @@
                     ] as [$name, $price, $qty])
                         <div class="flex items-center justify-between py-3 border-b border-border last:border-0">
                             <div>
-                                <p class="text-sm font-medium">{{ $name }}</p>
-                                <p class="text-xs text-muted-foreground">Cantidad: {{ $qty }}</p>
+                                <x-ui.typography as="p" class="font-medium">{{ $name }}</x-ui.typography>
+                                <x-ui.typography as="muted" class="text-xs">Cantidad: {{ $qty }}</x-ui.typography>
                             </div>
                             <span class="text-sm font-semibold">{{ $price }}</span>
                         </div>

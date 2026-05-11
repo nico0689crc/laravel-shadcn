@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Switch</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Toggle accesible. El estado se gestiona con Alpine.js y el input oculto garantiza compatibilidad con formularios HTML.</p>
+        <x-ui.typography as="h1" class="text-3xl">Switch</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Toggle accesible. El estado se gestiona con Alpine.js y el input oculto garantiza compatibilidad con formularios HTML.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <div class="flex items-center gap-3">
             <x-ui.switch id="airplane-mode" name="airplane_mode" />
             <x-ui.label for="airplane-mode">Airplane Mode</x-ui.label>
@@ -19,7 +19,7 @@
 
     {{-- On / Off / Disabled --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados</h2>
+        <x-ui.typography as="section-label">Estados</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <div class="flex items-center gap-2">
                 <x-ui.switch />
@@ -44,7 +44,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <div class="flex items-center gap-2">
                 <x-ui.switch state="destructive" :checked="true" />
@@ -69,7 +69,7 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <div class="flex items-center gap-2">
                 <x-ui.switch size="sm" :checked="true" />
@@ -86,7 +86,7 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — configuración</h2>
+        <x-ui.typography as="section-label">En contexto — configuración</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.header>
                 <x-ui.card.title>Preferencias</x-ui.card.title>
@@ -102,7 +102,7 @@
                     <div class="flex items-center justify-between gap-4">
                         <div class="space-y-0.5 min-w-0">
                             <x-ui.label for="{{ $item['id'] }}" class="cursor-pointer">{{ $item['label'] }}</x-ui.label>
-                            <p class="text-xs text-muted-foreground">{{ $item['desc'] }}</p>
+                            <x-ui.typography as="muted" class="text-xs">{{ $item['desc'] }}</x-ui.typography>
                         </div>
                         <x-ui.switch id="{{ $item['id'] }}" :checked="$item['on']" size="sm" class="shrink-0" />
                     </div>

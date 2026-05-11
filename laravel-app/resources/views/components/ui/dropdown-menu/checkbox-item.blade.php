@@ -34,14 +34,10 @@ $initialState = $checked === 'indeterminate'
     {{ $slot }}
     <span class="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
         {{-- checked --}}
-        <x-ui.icon name="check"
-            x-show="state === 'checked'"
-            class="size-3.5"
-        />
+        <x-lucide-check x-show="state === 'checked'"
+            class="size-3.5" />
         {{-- indeterminate --}}
-        <x-ui.icon name="minus"
-            x-show="state === 'indeterminate'"
-            class="size-3.5"
-        />
+        <x-lucide-minus x-show="state === 'indeterminate'"
+            class="size-3.5" />
     </span>
 </div>

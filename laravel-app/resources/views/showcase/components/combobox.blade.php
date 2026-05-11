@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Combobox</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Select con búsqueda integrada. Filtra opciones en tiempo real mientras el usuario escribe. Compatible con formularios HTML via input hidden.</p>
+        <x-ui.typography as="h1" class="text-3xl">Combobox</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Select con búsqueda integrada. Filtra opciones en tiempo real mientras el usuario escribe. Compatible con formularios HTML via input hidden.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <div class="max-w-xs">
             <x-ui.combobox
                 name="framework"
@@ -29,7 +29,7 @@
 
     {{-- Con valor inicial --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con valor seleccionado</h2>
+        <x-ui.typography as="section-label">Con valor seleccionado</x-ui.typography>
         <div class="max-w-xs">
             <x-ui.combobox
                 name="country"
@@ -55,7 +55,7 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="space-y-3 max-w-xs">
             @foreach(['sm' => 'Small', 'md' => 'Medium (default)', 'lg' => 'Large'] as $size => $label)
                 <x-ui.form-field>
@@ -74,7 +74,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="space-y-4 max-w-xs">
             <x-ui.form-field state="destructive" message="Seleccioná un rol válido.">
                 <x-ui.label state="destructive">Rol</x-ui.label>
@@ -91,7 +91,7 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — formulario</h2>
+        <x-ui.typography as="section-label">En contexto — formulario</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.header>
                 <x-ui.card.title>Nuevo proyecto</x-ui.card.title>

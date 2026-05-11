@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Sheet</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Panel deslizante desde cualquier lado de la pantalla. Ideal para filtros, detalles y formularios secundarios sin interrumpir el flujo principal.</p>
+        <x-ui.typography as="h1" class="text-3xl">Sheet</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Panel deslizante desde cualquier lado de la pantalla. Ideal para filtros, detalles y formularios secundarios sin interrumpir el flujo principal.</x-ui.typography>
     </div>
 
     {{-- Lados --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Lados</h2>
+        <x-ui.typography as="section-label">Lados</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             @foreach(['right' => 'Derecha (default)', 'left' => 'Izquierda', 'top' => 'Arriba', 'bottom' => 'Abajo'] as $side => $label)
                 <x-ui.sheet side="{{ $side }}">
@@ -22,7 +22,7 @@
                     </x-ui.sheet.header>
 
                     <x-ui.sheet.content>
-                        <p class="text-sm text-muted-foreground">El contenido del sheet va aquí. Puede contener formularios, listas u otros componentes.</p>
+                        <x-ui.typography as="muted">El contenido del sheet va aquí. Puede contener formularios, listas u otros componentes.</x-ui.typography>
                     </x-ui.sheet.content>
 
                     <x-ui.sheet.footer>
@@ -38,7 +38,7 @@
 
     {{-- Caso de uso: filtros --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Caso de uso — Filtros</h2>
+        <x-ui.typography as="section-label">Caso de uso — Filtros</x-ui.typography>
         <x-ui.sheet side="right">
             <x-slot:trigger>
                 <x-ui.button variant="outline">

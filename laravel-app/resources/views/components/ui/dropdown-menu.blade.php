@@ -6,7 +6,6 @@
 ])
 
 <div
-    class="inline-block"
     x-data="{
         open: @js((bool) $open),
         modal: @js((bool) $modal),
@@ -69,7 +68,7 @@
         }
     }"
     @keydown.escape.window="open && _close()"
-    {{ $attributes }}
+    {{ $attributes->merge(['class' => 'inline-block']) }}
 >
     {{ $slot }}
 </div>

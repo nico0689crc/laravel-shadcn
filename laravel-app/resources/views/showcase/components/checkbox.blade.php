@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Checkbox</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Checkbox accesible con estado gestionado por Alpine.js. El input oculto garantiza compatibilidad con formularios HTML.</p>
+        <x-ui.typography as="h1" class="text-3xl">Checkbox</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Checkbox accesible con estado gestionado por Alpine.js. El input oculto garantiza compatibilidad con formularios HTML.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <div class="flex items-center gap-2">
             <x-ui.checkbox id="terms" name="terms" />
             <x-ui.label for="terms">Accept terms and conditions</x-ui.label>
@@ -19,7 +19,7 @@
 
     {{-- Estados --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Checked / Unchecked</h2>
+        <x-ui.typography as="section-label">Checked / Unchecked</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <div class="flex items-center gap-2">
                 <x-ui.checkbox />
@@ -44,7 +44,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <div class="flex items-center gap-2">
                 <x-ui.checkbox state="destructive" />
@@ -69,7 +69,7 @@
 
     {{-- En contexto — lista de opciones --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — preferencias</h2>
+        <x-ui.typography as="section-label">En contexto — preferencias</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.header>
                 <x-ui.card.title>Notificaciones</x-ui.card.title>

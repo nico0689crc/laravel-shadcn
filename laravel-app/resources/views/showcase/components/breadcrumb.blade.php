@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Breadcrumb</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Navegación de migas de pan. API compositiva: Breadcrumb → BreadcrumbList → BreadcrumbItem / BreadcrumbSeparator. La página actual usa BreadcrumbPage (sin enlace).</p>
+        <x-ui.typography as="h1" class="text-3xl">Breadcrumb</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Navegación de migas de pan. API compositiva: Breadcrumb → BreadcrumbList → BreadcrumbItem / BreadcrumbSeparator. La página actual usa BreadcrumbPage (sin enlace).</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.breadcrumb>
             <x-ui.breadcrumb.list>
                 <x-ui.breadcrumb.item>
@@ -30,7 +30,7 @@
 
     {{-- Separador custom --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Separador custom (slash)</h2>
+        <x-ui.typography as="section-label">Separador custom (slash)</x-ui.typography>
         <x-ui.breadcrumb>
             <x-ui.breadcrumb.list>
                 <x-ui.breadcrumb.item>
@@ -56,7 +56,7 @@
 
     {{-- Con íconos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con íconos</h2>
+        <x-ui.typography as="section-label">Con íconos</x-ui.typography>
         <x-ui.breadcrumb>
             <x-ui.breadcrumb.list>
                 <x-ui.breadcrumb.item>
@@ -93,7 +93,7 @@
 
     {{-- Con ellipsis --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con elipsis (ruta larga)</h2>
+        <x-ui.typography as="section-label">Con elipsis (ruta larga)</x-ui.typography>
         <x-ui.breadcrumb>
             <x-ui.breadcrumb.list>
                 <x-ui.breadcrumb.item>
@@ -119,7 +119,7 @@
 
     {{-- En contexto — topbar de app --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — header de página</h2>
+        <x-ui.typography as="section-label">En contexto — header de página</x-ui.typography>
         @foreach([
             [['Inicio', '#'], ['Usuarios', '#'], ['Perfil']],
             [['Dashboard', '#'], ['Proyectos', '#'], ['Diseño', '#'], ['Componentes']],

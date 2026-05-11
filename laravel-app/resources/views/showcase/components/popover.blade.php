@@ -2,20 +2,20 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Popover</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Panel flotante anclado a un trigger. Se cierra con Escape o al hacer click afuera. Detecta automáticamente el espacio disponible y flipa la posición si es necesario.</p>
+        <x-ui.typography as="h1" class="text-3xl">Popover</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Panel flotante anclado a un trigger. Se cierra con Escape o al hacer click afuera. Detecta automáticamente el espacio disponible y flipa la posición si es necesario.</x-ui.typography>
     </div>
 
     {{-- ── Básico ────────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Básico</h2>
+        <x-ui.typography as="section-label">Básico</x-ui.typography>
         <x-ui.popover>
             <x-slot:trigger>
                 <x-ui.button variant="outline">Abrir popover</x-ui.button>
             </x-slot:trigger>
             <div class="space-y-2">
-                <p class="text-sm font-semibold">Configuración</p>
-                <p class="text-sm text-muted-foreground">Ajustá las opciones de esta sección.</p>
+                <x-ui.typography as="p" class="font-semibold">Configuración</x-ui.typography>
+                <x-ui.typography as="muted">Ajustá las opciones de esta sección.</x-ui.typography>
             </div>
         </x-ui.popover>
     </section>
@@ -24,7 +24,7 @@
 
     {{-- ── Posiciones ────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Posiciones</h2>
+        <x-ui.typography as="section-label">Posiciones</x-ui.typography>
         <div class="flex flex-wrap gap-4 py-16 justify-center">
             @foreach([
                 ['top', 'start'],
@@ -42,7 +42,7 @@
                     <x-slot:trigger>
                         <x-ui.button variant="outline" size="sm">{{ $side }} · {{ $align }}</x-ui.button>
                     </x-slot:trigger>
-                    <p class="text-sm text-muted-foreground">side: <span class="font-medium text-foreground">{{ $side }}</span> / align: <span class="font-medium text-foreground">{{ $align }}</span></p>
+                    <x-ui.typography as="muted">side: <span class="font-medium text-foreground">{{ $side }}</span> / align: <span class="font-medium text-foreground">{{ $align }}</span></x-ui.typography>
                 </x-ui.popover>
             @endforeach
         </div>
@@ -52,7 +52,7 @@
 
     {{-- ── Menú contextual ──────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Menú contextual</h2>
+        <x-ui.typography as="section-label">Menú contextual</x-ui.typography>
         <x-ui.popover width="w-48">
             <x-slot:trigger>
                 <x-ui.button variant="outline">
@@ -92,16 +92,16 @@
 
     {{-- ── Perfil de usuario ────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Perfil de usuario</h2>
-        <p class="text-sm text-muted-foreground">Patrón típico de navbar: avatar como trigger, menu de cuenta al desplegarse.</p>
+        <x-ui.typography as="section-label">Perfil de usuario</x-ui.typography>
+        <x-ui.typography as="muted">Patrón típico de navbar: avatar como trigger, menu de cuenta al desplegarse.</x-ui.typography>
 
         <x-ui.popover side="bottom" align="end" width="w-64">
             <x-slot:trigger>
                 <button class="flex items-center gap-2.5 rounded-lg border border-border px-2 py-1.5 hover:bg-accent transition-colors text-sm">
                     <x-ui.avatar fallback="MG" size="sm" />
                     <div class="text-left hidden sm:block">
-                        <p class="text-sm font-medium leading-tight">María González</p>
-                        <p class="text-xs text-muted-foreground leading-tight">Admin</p>
+                        <x-ui.typography as="p" class="font-medium leading-tight">María González</x-ui.typography>
+                        <x-ui.typography as="muted" class="text-xs leading-tight">Admin</x-ui.typography>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5 text-muted-foreground ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
@@ -113,8 +113,8 @@
             <div class="flex items-center gap-3 pb-3">
                 <x-ui.avatar fallback="MG" />
                 <div class="min-w-0">
-                    <p class="text-sm font-semibold truncate">María González</p>
-                    <p class="text-xs text-muted-foreground truncate">m.gonzalez@empresa.com</p>
+                    <x-ui.typography as="p" class="font-semibold truncate">María González</x-ui.typography>
+                    <x-ui.typography as="muted" class="text-xs truncate">m.gonzalez@empresa.com</x-ui.typography>
                 </div>
             </div>
 
@@ -153,8 +153,8 @@
 
     {{-- ── Filtros avanzados ────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Filtros avanzados</h2>
-        <p class="text-sm text-muted-foreground">El trigger muestra un badge con la cantidad de filtros activos. El panel tiene secciones con checkboxes y acciones de limpiar/aplicar.</p>
+        <x-ui.typography as="section-label">Filtros avanzados</x-ui.typography>
+        <x-ui.typography as="muted">El trigger muestra un badge con la cantidad de filtros activos. El panel tiene secciones con checkboxes y acciones de limpiar/aplicar.</x-ui.typography>
 
         <div
             x-data="{
@@ -188,7 +188,7 @@
                 <div class="space-y-4">
                     {{-- Sección Estado --}}
                     <div>
-                        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Estado</p>
+                        <x-ui.typography as="section-label" class="mb-2 tracking-wider">Estado</x-ui.typography>
                         <div class="space-y-2">
                             @foreach([
                                 ['activo',    'Activo',    'success'],
@@ -218,7 +218,7 @@
 
                     {{-- Sección Prioridad --}}
                     <div>
-                        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Prioridad</p>
+                        <x-ui.typography as="section-label" class="mb-2 tracking-wider">Prioridad</x-ui.typography>
                         <div class="space-y-2">
                             @foreach([
                                 ['alta',   'Alta',   'bg-destructive'],
@@ -261,8 +261,8 @@
 
     {{-- ── Notificaciones ───────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Centro de notificaciones</h2>
-        <p class="text-sm text-muted-foreground">Trigger con badge de no leídas. Panel con lista y acción de marcar todo como leído.</p>
+        <x-ui.typography as="section-label">Centro de notificaciones</x-ui.typography>
+        <x-ui.typography as="muted">Trigger con badge de no leídas. Panel con lista y acción de marcar todo como leído.</x-ui.typography>
 
         <div
             x-data="{
@@ -296,7 +296,7 @@
                 {{-- Header --}}
                 <div class="-mx-4 -mt-4 px-4 py-3 border-b border-border flex items-center justify-between mb-0">
                     <div class="flex items-center gap-2">
-                        <p class="text-sm font-semibold">Notificaciones</p>
+                        <x-ui.typography as="p" class="font-semibold">Notificaciones</x-ui.typography>
                         <span x-show="unread > 0" x-cloak class="inline-flex items-center justify-center size-5 rounded-full bg-primary/10 text-primary text-xs font-semibold" x-text="unread"></span>
                     </div>
                     <button
@@ -321,9 +321,9 @@
                                 x-text="n.initials"
                             ></div>
                             <div class="min-w-0 flex-1">
-                                <p class="text-xs font-medium leading-snug" x-text="n.name"></p>
-                                <p class="text-xs text-muted-foreground leading-snug line-clamp-2 mt-0.5" x-text="n.message"></p>
-                                <p class="text-[10px] text-muted-foreground/70 mt-1" x-text="n.time"></p>
+                                <x-ui.typography as="p" class="text-xs font-medium leading-snug" x-text="n.name"></x-ui.typography>
+                                <x-ui.typography as="muted" class="text-xs leading-snug line-clamp-2 mt-0.5" x-text="n.message"></x-ui.typography>
+                                <x-ui.typography as="muted" class="text-[10px] text-muted-foreground/70 mt-1" x-text="n.time"></x-ui.typography>
                             </div>
                             <span
                                 x-show="n.unread"
@@ -347,8 +347,8 @@
 
     {{-- ── Compartir enlace ─────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Compartir enlace</h2>
-        <p class="text-sm text-muted-foreground">Panel para copiar un enlace público y configurar permisos de acceso.</p>
+        <x-ui.typography as="section-label">Compartir enlace</x-ui.typography>
+        <x-ui.typography as="muted">Panel para copiar un enlace público y configurar permisos de acceso.</x-ui.typography>
 
         <x-ui.popover side="bottom" align="start" width="w-80">
             <x-slot:trigger>
@@ -375,7 +375,7 @@
             >
                 {{-- Link público --}}
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Enlace público</p>
+                    <x-ui.typography as="section-label" class="mb-2 tracking-wider">Enlace público</x-ui.typography>
                     <div class="flex gap-1.5">
                         <input
                             type="text"
@@ -403,7 +403,7 @@
 
                 {{-- Permisos --}}
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Permisos de acceso</p>
+                    <x-ui.typography as="section-label" class="mb-2 tracking-wider">Permisos de acceso</x-ui.typography>
                     <div class="grid grid-cols-2 gap-1.5">
                         @foreach([
                             ['read',  'Solo lectura',  'Puede ver el documento'],
@@ -425,7 +425,7 @@
 
                 {{-- Invitar --}}
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Invitar personas</p>
+                    <x-ui.typography as="section-label" class="mb-2 tracking-wider">Invitar personas</x-ui.typography>
                     <div class="flex gap-1.5">
                         <x-ui.input
                             type="email"
@@ -435,7 +435,7 @@
                         />
                         <x-ui.button size="sm">Invitar</x-ui.button>
                     </div>
-                    <p class="text-[11px] text-muted-foreground mt-2">Recibirán un email con acceso <span x-text="permission === 'read' ? 'de solo lectura' : 'para editar'"></span>.</p>
+                    <x-ui.typography as="muted" class="text-[11px] mt-2">Recibirán un email con acceso <span x-text="permission === 'read' ? 'de solo lectura' : 'para editar'"></span>.</x-ui.typography>
                 </div>
             </div>
         </x-ui.popover>

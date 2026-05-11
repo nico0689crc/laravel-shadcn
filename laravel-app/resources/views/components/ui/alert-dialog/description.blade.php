@@ -1,3 +1,3 @@
-<p {{ $attributes->twMerge('text-sm text-balance text-muted-foreground') }}>
+<x-ui.typography as="muted" {{ $attributes->twMerge('text-balance') }}>
     {{ $slot }}
-</p>
+</x-ui.typography>

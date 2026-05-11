@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Toast</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Notificaciones temporales via Alpine store. Se disparan con <code class="text-xs bg-muted px-1 py-0.5 rounded">$store.toast.add()</code> desde cualquier parte de la página. El <code class="text-xs bg-muted px-1 py-0.5 rounded">&lt;x-ui.toaster /&gt;</code> se coloca una sola vez en el layout.</p>
+        <x-ui.typography as="h1" class="text-3xl">Toast</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Notificaciones temporales via Alpine store. Se disparan con <x-ui.typography as="code">$store.toast.add()</x-ui.typography> desde cualquier parte de la página. El <x-ui.typography as="code">&lt;x-ui.toaster /&gt;</x-ui.typography> se coloca una sola vez en el layout.</x-ui.typography>
     </div>
 
     {{-- Variantes --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Variantes</h2>
+        <x-ui.typography as="section-label">Variantes</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             <x-ui.button
                 variant="outline"
@@ -51,7 +51,7 @@
 
     {{-- Solo título --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Solo título (sin descripción)</h2>
+        <x-ui.typography as="section-label">Solo título (sin descripción)</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             <x-ui.button variant="outline" @click="$store.toast.add('Copiado al portapapeles')">
                 Sin descripción
@@ -66,7 +66,7 @@
 
     {{-- Con acción --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con acción</h2>
+        <x-ui.typography as="section-label">Con acción</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             <x-ui.button
                 variant="outline"
@@ -95,7 +95,7 @@
 
     {{-- Duración custom --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Duración custom</h2>
+        <x-ui.typography as="section-label">Duración custom</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             <x-ui.button variant="outline" @click="$store.toast.add('Cierra en 1 segundo', { duration: 1000 })">
                 1 segundo
@@ -113,7 +113,7 @@
 
     {{-- Stack --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Stack múltiple</h2>
+        <x-ui.typography as="section-label">Stack múltiple</x-ui.typography>
         <x-ui.button
             variant="outline"
             @click="
@@ -130,7 +130,7 @@
 
     {{-- API reference --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">API</h2>
+        <x-ui.typography as="section-label">API</x-ui.typography>
         <x-ui.card class="max-w-lg">
             <x-ui.card.content class="pt-6">
                 <x-ui.table>
@@ -150,7 +150,7 @@
                             ['$store.toast.dismiss(id)',         'Cierra un toast por su id retornado por add()'],
                         ] as [$method, $desc])
                             <x-ui.table.row>
-                                <x-ui.table.cell><code class="text-xs font-mono">{{ $method }}</code></x-ui.table.cell>
+                                <x-ui.table.cell><x-ui.typography as="code">{{ $method }}</x-ui.typography></x-ui.table.cell>
                                 <x-ui.table.cell class="text-sm text-muted-foreground">{{ $desc }}</x-ui.table.cell>
                             </x-ui.table.row>
                         @endforeach

@@ -7,7 +7,7 @@
         {{ $attributes->twMerge('inline-flex items-center gap-1 pr-2.5 pl-3 h-9 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer') }}
     >
         <span>Siguiente</span>
-        <x-ui.icon name="chevron-right" class="size-4" />
+        <x-lucide-chevron-right class="size-4" />
     </a>
 @else
     <span
@@ -16,6 +16,6 @@
         {{ $attributes->twMerge('inline-flex items-center gap-1 pr-2.5 pl-3 h-9 rounded-md text-sm font-medium opacity-50 pointer-events-none') }}
     >
         <span>Siguiente</span>
-        <x-ui.icon name="chevron-right" class="size-4" />
+        <x-lucide-chevron-right class="size-4" />
     </span>
 @endif

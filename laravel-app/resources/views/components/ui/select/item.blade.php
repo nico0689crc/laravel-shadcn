@@ -20,7 +20,7 @@ $itemLabel = trim(strip_tags($slot->toHtml()));
         'opacity-50 cursor-not-allowed pointer-events-none': itemDisabled,
         'cursor-pointer': !itemDisabled,
     }"
-    {{ $attributes->twMerge('relative flex items-center select-none outline-none rounded-sm pl-8 pr-2 py-1.5 text-sm') }}
+    {{ $attributes->twMerge('relative flex items-center select-none outline-none rounded-sm pl-8 pr-2 py-1.5 text-sm hover:bg-primary/10') }}
 >
     {{-- Checkmark --}}
     <span
@@ -28,7 +28,7 @@ $itemLabel = trim(strip_tags($slot->toHtml()));
         x-show="String(value) === itemValue"
         aria-hidden="true"
     >
-        <x-ui.icon name="check" class="size-3.5" stroke-width="2.5" />
+        <x-lucide-check class="size-3.5" stroke-width="2.5" />
     </span>
 
     {{ $slot }}

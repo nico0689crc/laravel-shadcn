@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Alert Dialog</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Modal de confirmación para acciones destructivas o irreversibles. Sin botón X — solo acción o cancelación explícita.</p>
+        <x-ui.typography as="h1" class="text-3xl">Alert Dialog</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Modal de confirmación para acciones destructivas o irreversibles. Sin botón X — solo acción o cancelación explícita.</x-ui.typography>
     </div>
 
     {{-- ── Básico ────────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Básico</h2>
+        <x-ui.typography as="section-label">Básico</x-ui.typography>
         <x-ui.alert-dialog>
             <x-ui.alert-dialog.trigger>
                 <x-ui.button variant="outline">Abrir alert dialog</x-ui.button>
@@ -34,7 +34,7 @@
 
     {{-- ── Size sm (footer en 2 columnas) ──────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Size sm — footer 2 columnas</h2>
+        <x-ui.typography as="section-label">Size sm — footer 2 columnas</x-ui.typography>
         <x-ui.alert-dialog>
             <x-ui.alert-dialog.trigger>
                 <x-ui.button variant="outline">Alert sm</x-ui.button>
@@ -58,7 +58,7 @@
 
     {{-- ── Con media (ícono decorativo) ────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con media (ícono)</h2>
+        <x-ui.typography as="section-label">Con media (ícono)</x-ui.typography>
         <div class="flex flex-wrap gap-3">
             {{-- Destructivo con ícono --}}
             <x-ui.alert-dialog>
@@ -68,7 +68,7 @@
                 <x-ui.alert-dialog.content>
                     <x-ui.alert-dialog.header>
                         <x-ui.alert-dialog.media class="bg-destructive/10">
-                            <x-ui.icon name="triangle-alert" class="size-5 text-destructive" />
+                            <x-lucide-triangle-alert class="size-5 text-destructive" />
                         </x-ui.alert-dialog.media>
                         <x-ui.alert-dialog.title>Eliminar cuenta</x-ui.alert-dialog.title>
                         <x-ui.alert-dialog.description>
@@ -92,7 +92,7 @@
                 <x-ui.alert-dialog.content>
                     <x-ui.alert-dialog.header>
                         <x-ui.alert-dialog.media>
-                            <x-ui.icon name="circle-check" class="size-5 text-success" />
+                            <x-lucide-circle-check class="size-5 text-success" />
                         </x-ui.alert-dialog.media>
                         <x-ui.alert-dialog.title>¿Publicar los cambios?</x-ui.alert-dialog.title>
                         <x-ui.alert-dialog.description>

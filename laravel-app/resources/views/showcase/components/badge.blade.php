@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Badge</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Etiqueta compacta para estados, categorías y contadores. Soporta variantes de forma y estados semánticos en dos estilos: filled y subtle.</p>
+        <x-ui.typography as="h1" class="text-3xl">Badge</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Etiqueta compacta para estados, categorías y contadores. Soporta variantes de forma y estados semánticos en dos estilos: filled y subtle.</x-ui.typography>
     </div>
 
     {{-- Variantes base --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Variantes</h2>
+        <x-ui.typography as="section-label">Variantes</x-ui.typography>
         <div class="flex flex-wrap gap-3 items-center">
             <x-ui.badge>Default</x-ui.badge>
             <x-ui.badge variant="secondary">Secondary</x-ui.badge>
@@ -20,7 +20,7 @@
 
     {{-- Estados filled --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados — filled</h2>
+        <x-ui.typography as="section-label">Estados — filled</x-ui.typography>
         <div class="flex flex-wrap gap-3 items-center">
             <x-ui.badge state="destructive">Error</x-ui.badge>
             <x-ui.badge state="success">Completado</x-ui.badge>
@@ -33,7 +33,7 @@
 
     {{-- Estados subtle --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados — subtle</h2>
+        <x-ui.typography as="section-label">Estados — subtle</x-ui.typography>
         <div class="flex flex-wrap gap-3 items-center">
             <x-ui.badge state="destructive" :subtle="true">Error</x-ui.badge>
             <x-ui.badge state="success"     :subtle="true">Completado</x-ui.badge>
@@ -46,7 +46,7 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto</h2>
+        <x-ui.typography as="section-label">En contexto</x-ui.typography>
         <div class="flex flex-wrap gap-4 items-center">
             <span class="flex items-center gap-2 text-sm font-medium">
                 Pedido #1042

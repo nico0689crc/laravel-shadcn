@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Slider</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Control deslizante con soporte para valor único, rango, múltiples pulgares, orientación vertical y RTL. Drag + teclado + touch.</p>
+        <x-ui.typography as="h1" class="text-3xl">Slider</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Control deslizante con soporte para valor único, rango, múltiples pulgares, orientación vertical y RTL. Drag + teclado + touch.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.slider :values="[33]" />
         </div>
@@ -18,8 +18,8 @@
 
     {{-- Range --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Range</h2>
-        <p class="text-sm text-muted-foreground">Array con dos valores. Los pulgares no se cruzan.</p>
+        <x-ui.typography as="section-label">Range</x-ui.typography>
+        <x-ui.typography as="muted">Array con dos valores. Los pulgares no se cruzan.</x-ui.typography>
         <div
             class="max-w-sm space-y-2"
             x-data="{ lo: 20, hi: 80 }"
@@ -37,8 +37,8 @@
 
     {{-- Multiple thumbs --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Multiple Thumbs</h2>
-        <p class="text-sm text-muted-foreground">Array con tres o más valores.</p>
+        <x-ui.typography as="section-label">Multiple Thumbs</x-ui.typography>
+        <x-ui.typography as="muted">Array con tres o más valores.</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.slider :values="[10, 50, 90]" />
         </div>
@@ -48,23 +48,23 @@
 
     {{-- Vertical --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Vertical</h2>
+        <x-ui.typography as="section-label">Vertical</x-ui.typography>
         <div class="flex items-end gap-8">
             <div class="space-y-2 text-center">
                 <x-ui.slider :values="[60]" orientation="vertical" />
-                <p class="text-xs text-muted-foreground">Single</p>
+                <x-ui.typography as="muted" class="text-xs">Single</x-ui.typography>
             </div>
             <div class="space-y-2 text-center">
                 <x-ui.slider :values="[20, 75]" orientation="vertical" />
-                <p class="text-xs text-muted-foreground">Range</p>
+                <x-ui.typography as="muted" class="text-xs">Range</x-ui.typography>
             </div>
             <div class="space-y-2 text-center">
                 <x-ui.slider :values="[60]" orientation="vertical" class="h-32" size="sm" />
-                <p class="text-xs text-muted-foreground">sm · h-32</p>
+                <x-ui.typography as="muted" class="text-xs">sm · h-32</x-ui.typography>
             </div>
             <div class="space-y-2 text-center">
                 <x-ui.slider :values="[60]" orientation="vertical" class="h-64" size="lg" />
-                <p class="text-xs text-muted-foreground">lg · h-64</p>
+                <x-ui.typography as="muted" class="text-xs">lg · h-64</x-ui.typography>
             </div>
         </div>
     </section>
@@ -73,18 +73,18 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="max-w-sm space-y-6">
             <div class="space-y-2">
-                <p class="text-sm text-muted-foreground">sm</p>
+                <x-ui.typography as="muted">sm</x-ui.typography>
                 <x-ui.slider :values="[60]" size="sm" />
             </div>
             <div class="space-y-2">
-                <p class="text-sm text-muted-foreground">md (default)</p>
+                <x-ui.typography as="muted">md (default)</x-ui.typography>
                 <x-ui.slider :values="[60]" size="md" />
             </div>
             <div class="space-y-2">
-                <p class="text-sm text-muted-foreground">lg</p>
+                <x-ui.typography as="muted">lg</x-ui.typography>
                 <x-ui.slider :values="[60]" size="lg" />
             </div>
         </div>
@@ -94,7 +94,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="max-w-sm space-y-6">
             @foreach([
                 ['state' => null,          'label' => 'Default',     'class' => ''],
@@ -104,7 +104,7 @@
                 ['state' => 'info',        'label' => 'Info',        'class' => 'text-info'],
             ] as $s)
                 <div class="space-y-2">
-                    <p class="text-sm {{ $s['class'] }}">{{ $s['label'] }}</p>
+                    <x-ui.typography as="p" class="{{ $s['class'] }}">{{ $s['label'] }}</x-ui.typography>
                     <x-ui.slider :values="[60]" :state="$s['state']" />
                 </div>
             @endforeach
@@ -115,14 +115,14 @@
 
     {{-- Step --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Step</h2>
+        <x-ui.typography as="section-label">Step</x-ui.typography>
         <div class="max-w-sm space-y-6">
             <div class="space-y-2">
-                <p class="text-sm text-muted-foreground">step=10</p>
+                <x-ui.typography as="muted">step=10</x-ui.typography>
                 <x-ui.slider :values="[50]" :step="10" />
             </div>
             <div class="space-y-2">
-                <p class="text-sm text-muted-foreground">step=25</p>
+                <x-ui.typography as="muted">step=25</x-ui.typography>
                 <x-ui.slider :values="[50]" :step="25" />
             </div>
         </div>
@@ -132,7 +132,7 @@
 
     {{-- Disabled --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Disabled</h2>
+        <x-ui.typography as="section-label">Disabled</x-ui.typography>
         <div class="max-w-sm space-y-4">
             <x-ui.slider :values="[40]" disabled />
             <x-ui.slider :values="[20, 70]" disabled />
@@ -143,7 +143,7 @@
 
     {{-- RTL --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">RTL</h2>
+        <x-ui.typography as="section-label">RTL</x-ui.typography>
         <div class="max-w-sm space-y-4">
             <x-ui.slider :values="[30]" rtl />
             <x-ui.slider :values="[20, 80]" rtl />
@@ -154,7 +154,7 @@
 
     {{-- En contexto — mezclador de audio --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — mezclador de audio</h2>
+        <x-ui.typography as="section-label">En contexto — mezclador de audio</x-ui.typography>
         <div class="flex gap-6">
             {{-- Canales verticales --}}
             <x-ui.card class="w-fit">

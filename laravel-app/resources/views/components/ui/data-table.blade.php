@@ -123,7 +123,7 @@
                 @input="setSearch($event.target.value)"
             >
                 <x-slot:leading>
-                    <x-ui.icon name="search" class="size-full" />
+                    <x-lucide-search class="size-full" />
                 </x-slot:leading>
             </x-ui.input>
         </div>
@@ -132,7 +132,7 @@
         {{-- Column visibility — reutiliza x-ui.button --}}
         <div class="relative ml-auto">
             <x-ui.button variant="outline" size="sm" @click="visDropOpen = !visDropOpen">
-                <x-ui.icon name="columns" class="size-4" />
+                <x-lucide-columns class="size-4" />
                 Columnas
             </x-ui.button>
 
@@ -147,7 +147,7 @@
                 x-transition:leave-end="opacity-0 scale-95"
                 class="absolute right-0 top-full z-50 mt-1 w-48 rounded-md border border-border bg-popover p-1 shadow-md"
             >
-                <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Alternar columnas</p>
+                <x-ui.typography as="muted" class="px-2 py-1.5 text-xs font-semibold">Alternar columnas</x-ui.typography>
                 <template x-for="col in columns.filter(c => c.hideable !== false)" :key="col.key">
                     <button
                         type="button"
@@ -159,7 +159,7 @@
                             class="flex size-4 shrink-0 items-center justify-center rounded border transition-colors"
                             :class="!hiddenCols.includes(col.key) ? 'bg-primary border-primary text-primary-foreground' : 'bg-background border-input'"
                         >
-                            <x-ui.icon name="check" x-show="!hiddenCols.includes(col.key)" class="size-3" stroke-width="3" />
+                            <x-lucide-check x-show="!hiddenCols.includes(col.key)" class="size-3" stroke-width="3" />
                         </span>
                         <span x-text="col.label" class="capitalize"></span>
                     </button>
@@ -191,8 +191,8 @@
                             : 'bg-background border-input'"
                         class="size-4 shrink-0 rounded border flex items-center justify-center transition-colors cursor-pointer"
                     >
-                        <x-ui.icon name="check" x-show="allPageSelected"                        class="size-3" stroke-width="3" />
-                        <x-ui.icon name="minus" x-show="somePageSelected && !allPageSelected" class="size-3" stroke-width="3" />
+                        <x-lucide-check x-show="allPageSelected"                        class="size-3" stroke-width="3" />
+                        <x-lucide-minus x-show="somePageSelected && !allPageSelected" class="size-3" stroke-width="3" />
                     </button>
                 </x-ui.table.head>
                 @endif
@@ -208,9 +208,9 @@
                             <span x-text="col.label"></span>
                             <template x-if="col.sortable">
                                 <span class="text-muted-foreground/50" aria-hidden="true">
-                                    <x-ui.icon name="chevrons-up-down" x-show="sortKey !== col.key"                        class="size-3.5" />
-                                    <x-ui.icon name="chevron-up"       x-show="sortKey === col.key && sortDir === 'asc'"  class="size-3.5 text-foreground" />
-                                    <x-ui.icon name="chevron-down"     x-show="sortKey === col.key && sortDir === 'desc'" class="size-3.5 text-foreground" />
+                                    <x-lucide-chevrons-up-down x-show="sortKey !== col.key"                        class="size-3.5" />
+                                    <x-lucide-chevron-up x-show="sortKey === col.key && sortDir === 'asc'"  class="size-3.5 text-foreground" />
+                                    <x-lucide-chevron-down x-show="sortKey === col.key && sortDir === 'desc'" class="size-3.5 text-foreground" />
                                 </span>
                             </template>
                         </div>
@@ -239,7 +239,7 @@
                                     : 'bg-background border-input'"
                                 class="size-4 shrink-0 rounded border flex items-center justify-center transition-colors cursor-pointer"
                             >
-                                <x-ui.icon name="check" x-show="selected.includes(row._idx)" class="size-3" stroke-width="3" />
+                                <x-lucide-check x-show="selected.includes(row._idx)" class="size-3" stroke-width="3" />
                             </button>
                         </x-ui.table.cell>
                         @endif
@@ -307,7 +307,7 @@
                 class="size-8"
                 aria-label="Página anterior"
             >
-                <x-ui.icon name="chevron-left" class="size-4" />
+                <x-lucide-chevron-left class="size-4" />
             </x-ui.button>
 
             <template x-for="(num, i) in pageNumbers" :key="i">
@@ -332,7 +332,7 @@
                 class="size-8"
                 aria-label="Página siguiente"
             >
-                <x-ui.icon name="chevron-right" class="size-4" />
+                <x-lucide-chevron-right class="size-4" />
             </x-ui.button>
         </div>
     </div>

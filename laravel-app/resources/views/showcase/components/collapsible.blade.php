@@ -2,17 +2,17 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Collapsible</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Bloque de contenido que se expande y colapsa. Primitivo de un solo ítem — para múltiples ítems usar Accordion. Animación via CSS Grid.</p>
+        <x-ui.typography as="h1" class="text-3xl">Collapsible</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Bloque de contenido que se expande y colapsa. Primitivo de un solo ítem — para múltiples ítems usar Accordion. Animación via CSS Grid.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <div class="max-w-sm space-y-2">
             <x-ui.collapsible>
                 <div class="flex items-center justify-between">
-                    <p class="text-sm font-medium">Repositorios con estrella</p>
+                    <x-ui.typography as="p" class="font-medium">Repositorios con estrella</x-ui.typography>
                     <x-ui.collapsible.trigger>
                         <x-ui.button variant="ghost" size="icon" class="size-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -38,7 +38,7 @@
 
     {{-- Abierto por defecto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Abierto por defecto</h2>
+        <x-ui.typography as="section-label">Abierto por defecto</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.collapsible :open="true" class="border border-border rounded-lg">
                 <x-ui.collapsible.trigger class="flex w-full items-center justify-between px-4 py-3 text-sm font-medium hover:bg-muted/50 transition-colors rounded-lg">
@@ -63,7 +63,7 @@
 
     {{-- Deshabilitado --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Deshabilitado</h2>
+        <x-ui.typography as="section-label">Deshabilitado</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.collapsible disabled class="border border-border rounded-lg opacity-60">
                 <x-ui.collapsible.trigger class="flex w-full items-center justify-between px-4 py-3 text-sm font-medium">
@@ -73,7 +73,7 @@
                     </svg>
                 </x-ui.collapsible.trigger>
                 <x-ui.collapsible.content>
-                    <p class="px-4 pb-3 text-sm text-muted-foreground">Contenido restringido.</p>
+                    <x-ui.typography as="muted" class="px-4 pb-3">Contenido restringido.</x-ui.typography>
                 </x-ui.collapsible.content>
             </x-ui.collapsible>
         </div>

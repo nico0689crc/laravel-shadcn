@@ -1,3 +1,3 @@
-<p {{ $attributes->twMerge('text-sm leading-relaxed [&_p]:leading-relaxed') }}>
+<x-ui.typography as="p" {{ $attributes->twMerge('[&_p]:leading-relaxed [&:not(:first-child)]:mt-0') }}>
     {{ $slot }}
-</p>
+</x-ui.typography>

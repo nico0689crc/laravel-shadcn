@@ -12,9 +12,9 @@
     @endif
 
     <div class="space-y-1">
-        <p class="text-sm font-medium text-foreground">{{ $title }}</p>
+        <x-ui.typography as="small" element="p">{{ $title }}</x-ui.typography>
         @if($description)
-            <p class="text-sm text-muted-foreground max-w-[24rem]">{{ $description }}</p>
+            <x-ui.typography as="muted" class="max-w-96">{{ $description }}</x-ui.typography>
         @endif
     </div>
 

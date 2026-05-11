@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Tooltip</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Información contextual en hover o focus. El ícono o elemento disparador debe estar dentro del slot; el texto del tooltip va en el prop <code class="text-xs bg-muted px-1 py-0.5 rounded">content</code>.</p>
+        <x-ui.typography as="h1" class="text-3xl">Tooltip</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Información contextual en hover o focus. El ícono o elemento disparador debe estar dentro del slot; el texto del tooltip va en el prop <x-ui.typography as="code">content</x-ui.typography>.</x-ui.typography>
     </div>
 
     {{-- Lados --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Lados</h2>
+        <x-ui.typography as="section-label">Lados</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center justify-center py-8">
             <x-ui.tooltip content="Tooltip arriba" side="top">
                 <x-ui.button variant="outline" size="sm">Top</x-ui.button>
@@ -29,7 +29,7 @@
 
     {{-- Con ícono --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En íconos de acción</h2>
+        <x-ui.typography as="section-label">En íconos de acción</x-ui.typography>
         <div class="flex flex-wrap gap-3 items-center">
             <x-ui.tooltip content="Editar">
                 <x-ui.button size="icon" variant="ghost" aria-label="Editar">
@@ -53,8 +53,8 @@
 
     {{-- En texto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En texto con ayuda</h2>
-        <p class="text-sm text-muted-foreground max-w-prose">
+        <x-ui.typography as="section-label">En texto con ayuda</x-ui.typography>
+        <x-ui.typography as="muted" class="max-w-prose">
             Tu plan actual incluye
             <x-ui.tooltip content="Hasta 5 proyectos activos simultáneos">
                 <span class="underline underline-offset-2 decoration-dashed cursor-help font-medium text-foreground">5 proyectos</span>
@@ -63,7 +63,7 @@
             <x-ui.tooltip content="Colaboradores con acceso de edición" side="top">
                 <span class="underline underline-offset-2 decoration-dashed cursor-help font-medium text-foreground">3 colaboradores</span>
             </x-ui.tooltip>.
-        </p>
+        </x-ui.typography>
     </section>
 
 </div>

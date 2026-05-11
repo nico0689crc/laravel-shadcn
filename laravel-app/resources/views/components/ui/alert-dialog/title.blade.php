@@ -1,3 +1,3 @@
-<h2 {{ $attributes->twMerge('font-heading text-base font-medium') }}>
+<x-ui.typography as="small" element="h2" {{ $attributes->twMerge('font-heading text-base') }}>
     {{ $slot }}
-</h2>
+</x-ui.typography>

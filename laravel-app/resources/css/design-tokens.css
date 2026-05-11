@@ -461,6 +461,124 @@
 
 
 /* ────────────────────────────────────────────────────────────
+   Violet — hue 300 (purple/violet)
+──────────────────────────────────────────────────────────── */
+:root {
+    --violet-50:  oklch(0.971 0.022 300);
+    --violet-100: oklch(0.940 0.050 300);
+    --violet-200: oklch(0.895 0.090 300);
+    --violet-300: oklch(0.830 0.148 300);
+    --violet-400: oklch(0.743 0.203 300);
+    --violet-500: oklch(0.640 0.242 300);
+    --violet-600: oklch(0.553 0.252 300);
+    --violet-700: oklch(0.466 0.224 300);
+    --violet-800: oklch(0.393 0.184 300);
+    --violet-900: oklch(0.335 0.140 300);
+    --violet-950: oklch(0.220 0.087 300);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   THEMES — overrides de tokens semánticos por tema de marca
+   Aplicar [data-theme="nombre"] en <html> para activar.
+   Solo se redefinen --primary, --ring y --radius-*.
+   El resto del sistema (estados, superficies, texto) no cambia.
+──────────────────────────────────────────────────────────── */
+
+/* — Sapphire — Azul profesional · SaaS / Enterprise · radio 6px — */
+[data-theme="sapphire"] {
+    --primary:                       var(--blue-600);
+    --primary-foreground:            var(--neutral-50);
+    --ring:                          var(--blue-600);
+    --sidebar-primary:               var(--blue-600);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--blue-600);
+    --radius-sm:  0.125rem;
+    --radius-md:  0.25rem;
+    --radius-lg:  0.375rem;
+    --radius-xl:  0.5rem;
+    --radius-2xl: 0.75rem;
+}
+.dark[data-theme="sapphire"] {
+    --primary:                       var(--blue-400);
+    --primary-foreground:            var(--neutral-950);
+    --ring:                          var(--blue-400);
+    --sidebar-primary:               var(--blue-500);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--blue-400);
+}
+
+/* — Emerald — Verde amigable · Consumer / Salud · radio 12px — */
+[data-theme="emerald"] {
+    --primary:                       var(--green-600);
+    --primary-foreground:            var(--neutral-50);
+    --ring:                          var(--green-600);
+    --sidebar-primary:               var(--green-600);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--green-600);
+    --radius-sm:  0.375rem;
+    --radius-md:  0.5rem;
+    --radius-lg:  0.75rem;
+    --radius-xl:  1rem;
+    --radius-2xl: 1.25rem;
+}
+.dark[data-theme="emerald"] {
+    --primary:                       var(--green-400);
+    --primary-foreground:            var(--neutral-950);
+    --ring:                          var(--green-400);
+    --sidebar-primary:               var(--green-500);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--green-400);
+}
+
+/* — Rose — Rojo assertivo · Fintech / Urgente · radio 4px — */
+[data-theme="rose"] {
+    --primary:                       var(--red-600);
+    --primary-foreground:            var(--neutral-50);
+    --ring:                          var(--red-600);
+    --sidebar-primary:               var(--red-600);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--red-600);
+    --radius-sm:  0;
+    --radius-md:  0.125rem;
+    --radius-lg:  0.25rem;
+    --radius-xl:  0.375rem;
+    --radius-2xl: 0.5rem;
+}
+.dark[data-theme="rose"] {
+    --primary:                       var(--red-400);
+    --primary-foreground:            var(--neutral-950);
+    --ring:                          var(--red-400);
+    --sidebar-primary:               var(--red-500);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--red-400);
+}
+
+/* — Violet — Creativo · Startup / Diseño · radio 16px — */
+[data-theme="violet"] {
+    --primary:                       var(--violet-600);
+    --primary-foreground:            var(--neutral-50);
+    --ring:                          var(--violet-600);
+    --sidebar-primary:               var(--violet-600);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--violet-600);
+    --radius-sm:  0.5rem;
+    --radius-md:  0.75rem;
+    --radius-lg:  1rem;
+    --radius-xl:  1.25rem;
+    --radius-2xl: 1.5rem;
+}
+.dark[data-theme="violet"] {
+    --primary:                       var(--violet-400);
+    --primary-foreground:            var(--neutral-950);
+    --ring:                          var(--violet-400);
+    --sidebar-primary:               var(--violet-500);
+    --sidebar-primary-foreground:    var(--neutral-50);
+    --sidebar-ring:                  var(--violet-400);
+}
+
+
+/* ────────────────────────────────────────────────────────────
    9. Z-INDEX — capas nombradas
 ──────────────────────────────────────────────────────────── */
 :root {
@@ -470,6 +588,7 @@
     --z-sticky:    200;
     --z-fixed:     300;
     --z-overlay:   400;
+    --z-sidebar:   450;
     --z-modal:     500;
     --z-popover:   600;
     --z-tooltip:   700;

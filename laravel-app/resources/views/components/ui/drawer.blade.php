@@ -23,7 +23,7 @@ $heightClass = match($size) {
             x-show="open"
             x-cloak
             @keydown.escape.window="open = false"
-            class="fixed inset-0 z-[--z-modal] flex flex-col justify-end"
+            class="fixed inset-0 z-(--z-modal) flex flex-col justify-end"
         >
             {{-- Overlay --}}
             <div

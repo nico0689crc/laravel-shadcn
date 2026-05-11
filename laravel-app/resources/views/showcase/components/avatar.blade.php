@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Avatar</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Imagen de perfil circular con fallback automático a iniciales cuando la imagen falla o no se provee.</p>
+        <x-ui.typography as="h1" class="text-3xl">Avatar</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Imagen de perfil circular con fallback automático a iniciales cuando la imagen falla o no se provee.</x-ui.typography>
     </div>
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="flex flex-wrap gap-4 items-end">
             <x-ui.avatar size="sm" alt="Ana García" />
             <x-ui.avatar size="md" alt="Ana García" />
@@ -21,7 +21,7 @@
 
     {{-- Con imagen --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con imagen</h2>
+        <x-ui.typography as="section-label">Con imagen</x-ui.typography>
         <div class="flex flex-wrap gap-4 items-center">
             <x-ui.avatar src="https://i.pravatar.cc/150?img=1" alt="Carlos Mendoza" />
             <x-ui.avatar src="https://i.pravatar.cc/150?img=5" alt="Laura Torres" />
@@ -35,7 +35,7 @@
 
     {{-- Fallback con iniciales --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Fallback — iniciales</h2>
+        <x-ui.typography as="section-label">Fallback — iniciales</x-ui.typography>
         <div class="flex flex-wrap gap-4 items-center">
             <x-ui.avatar alt="Ana García" />
             <x-ui.avatar alt="Juan Carlos Pérez" />
@@ -48,7 +48,7 @@
 
     {{-- Grupo apilado --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Grupo apilado</h2>
+        <x-ui.typography as="section-label">Grupo apilado</x-ui.typography>
         <div class="flex -space-x-2">
             <x-ui.avatar src="https://i.pravatar.cc/150?img=1" alt="Usuario 1" class="ring-2 ring-background" />
             <x-ui.avatar src="https://i.pravatar.cc/150?img=2" alt="Usuario 2" class="ring-2 ring-background" />
@@ -61,12 +61,12 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — perfil</h2>
+        <x-ui.typography as="section-label">En contexto — perfil</x-ui.typography>
         <div class="flex items-center gap-3 max-w-xs">
             <x-ui.avatar src="https://i.pravatar.cc/150?img=1" alt="Ana García" size="lg" />
             <div>
-                <p class="text-sm font-semibold">Ana García</p>
-                <p class="text-xs text-muted-foreground">ana@ejemplo.com</p>
+                <x-ui.typography as="p" class="text-sm font-semibold">Ana García</x-ui.typography>
+                <x-ui.typography as="muted" class="text-xs">ana@ejemplo.com</x-ui.typography>
             </div>
         </div>
     </section>

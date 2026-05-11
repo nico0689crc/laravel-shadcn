@@ -2,12 +2,12 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Native Select</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Elemento <code class="font-mono text-sm">&lt;select&gt;</code> nativo estilizado. Más accesible en mobile, sin Alpine.js.</p>
+        <x-ui.typography as="h1" class="text-3xl">Native Select</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Elemento <x-ui.typography as="code">&lt;select&gt;</x-ui.typography> nativo estilizado. Más accesible en mobile, sin Alpine.js.</x-ui.typography>
     </div>
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="flex flex-col gap-3 max-w-xs">
             @foreach(['sm', 'md', 'lg'] as $size)
                 <x-ui.native-select :size="$size">
@@ -23,7 +23,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados</h2>
+        <x-ui.typography as="section-label">Estados</x-ui.typography>
         <div class="flex flex-col gap-3 max-w-xs">
             <x-ui.native-select state="destructive">
                 <option>Estado: destructive</option>
@@ -43,7 +43,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con optgroup</h2>
+        <x-ui.typography as="section-label">Con optgroup</x-ui.typography>
         <x-ui.native-select class="max-w-xs">
             <optgroup label="Frutas">
                 <option>Manzana</option>

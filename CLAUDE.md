@@ -115,29 +115,41 @@ El `md` es el tamaño por defecto si no se especifica.
 
 ---
 
-### 5. Tipografía responsive
+### 5. Tipografía — usar `<x-ui.typography>` siempre
+
+Nunca usar tags HTML crudos (`<h1>`, `<p>`, `<code>`, etc.) para texto. Siempre usar el componente:
 
 ```html
-<!-- Display -->
-<h1 class="text-4xl sm:text-5xl lg:text-[60px] font-bold leading-[1.1]">
-
-<!-- H1 de página -->
-<h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.15]">
-
-<!-- H2 de sección -->
-<h2 class="text-xl sm:text-2xl font-semibold leading-[1.2]">
-
-<!-- H3 de sub-sección -->
-<h3 class="text-lg sm:text-xl font-medium leading-[1.25]">
-
-<!-- Body con legibilidad -->
-<p class="text-sm sm:text-base leading-relaxed max-w-prose">
-
-<!-- Caption / helper text -->
-<p class="text-xs text-muted-foreground leading-normal">
+<x-ui.typography as="variante">Texto</x-ui.typography>
 ```
 
-**Regla:** texto de párrafo siempre con `max-w-prose` (≈65ch). Sin esta restricción el texto se vuelve ilegible en pantallas anchas.
+#### Tabla de variantes
+
+| `as=` | Tag | Cuándo usar |
+|---|---|---|
+| `h1` | `<h1>` | Título único de página |
+| `h2` | `<h2>` | Título de sección principal |
+| `h3` | `<h3>` | Sub-sección dentro de una sección |
+| `h4` | `<h4>` | Nivel más bajo de jerarquía de títulos |
+| `lead` | `<p>` | Subtítulo o introducción prominente de sección |
+| `large` | `<div>` | Énfasis visual sin jerarquía semántica |
+| `p` | `<p>` | Cuerpo de texto con color `foreground` normal |
+| `muted` | `<p>` | Descripción, helper text, información secundaria |
+| `small` | `<small>` | Label compacto, metadata (`font-medium`) |
+| `code` | `<code>` | Código inline, nombres de props, tokens |
+| `section-label` | `<h2>` | Etiqueta de sección: `text-xs uppercase tracking-widest` |
+| `blockquote` | `<blockquote>` | Citas, fragmentos destacados |
+| `list` | `<ul>` | Listas de items |
+
+#### Reglas de uso
+
+- **`lead` vs `muted`**: `lead` es visible/prominente (subtítulo de hero), `muted` es texto gris secundario
+- **`large` vs `h4`**: `h4` si está en jerarquía semántica, `large` si es solo énfasis visual
+- **`small` vs `muted`**: `small` tiene `font-medium` (label de dato), `muted` es descriptivo sin peso
+- **`p` vs `muted`**: `p` tiene color `foreground` normal, `muted` tiene `text-muted-foreground`
+- Todo `p` y `muted` de párrafo llevan `class="max-w-prose"` — sin esto el texto se vuelve ilegible en pantallas anchas
+- Para display (hero/marketing), override sobre `h1`: `<x-ui.typography as="h1" class="text-5xl sm:text-[60px]">`
+- Para `section-label` con tag semántico distinto: `<x-ui.typography as="section-label" element="p">`
 
 ---
 
@@ -228,7 +240,106 @@ Setear `data-density` en el layout raíz según el contexto de la pantalla:
 
 ---
 
-### 10. Composición de pantallas — checklist
+### 10. Estructura de página estándar
+
+#### Anatomía y espaciado
+
+Toda página tiene tres zonas. El espaciado entre zonas es fijo:
+
+```
+┌─────────────────────────────────────────────┐
+│  PAGE HEADER      space-y-1 interno         │  ← h1 + muted + acción primaria
+│  (h1 / muted / button)                      │
+├─────────────────────────────────────────────┤
+│                  ↕ space-y-8                │
+│  CONTENT                                    │  ← cards, tablas, listas
+│  (x-ui.card / x-ui.table / etc.)           │
+├─────────────────────────────────────────────┤
+│                  ↕ space-y-4 (dentro card)  │
+│  ACTIONS (si aplica)                        │  ← al pie de formulario o card
+└─────────────────────────────────────────────┘
+```
+
+```blade
+<x-layouts.app>
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        {{-- PAGE HEADER --}}
+        <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+                <x-ui.typography as="h1">Título de página</x-ui.typography>
+                <x-ui.typography as="muted" class="max-w-prose">
+                    Descripción breve de la sección.
+                </x-ui.typography>
+            </div>
+            {{-- Acción primaria siempre top-right --}}
+            <x-ui.button>Acción principal</x-ui.button>
+        </div>
+
+        {{-- CONTENT --}}
+        <x-ui.card>
+
+            {{-- Sub-sección dentro de la card --}}
+            <x-ui.card.content class="p-6 space-y-6">
+                <x-ui.typography as="section-label">Sub-sección</x-ui.typography>
+                {{-- contenido --}}
+            </x-ui.card.content>
+
+            {{-- ACTIONS al pie de la card --}}
+            <x-ui.card.footer class="justify-end gap-2">
+                <x-ui.button variant="ghost">Cancelar</x-ui.button>
+                <x-ui.button>Guardar</x-ui.button>
+            </x-ui.card.footer>
+
+        </x-ui.card>
+
+    </div>
+</x-layouts.app>
+```
+
+#### Tipografía por zona
+
+| Zona | Componente | Variante |
+|---|---|---|
+| Título de página | `<x-ui.typography>` | `as="h1"` |
+| Descripción de página | `<x-ui.typography>` | `as="muted" class="max-w-prose"` |
+| Título de sección/card | `<x-ui.card.title>` o `<x-ui.typography as="h2">` | — |
+| Descripción de card | `<x-ui.card.description>` o `as="muted"` | — |
+| Etiqueta de sub-sección | `<x-ui.typography>` | `as="section-label"` |
+| Texto de cuerpo | `<x-ui.typography>` | `as="p" class="max-w-prose"` |
+
+#### Acciones — tres patrones
+
+**1. Acción de página** (crear, importar): top-right del page header.
+```blade
+<div class="flex items-start justify-between gap-4">
+    <div class="space-y-1">...</div>
+    <x-ui.button>Nueva entrada</x-ui.button>
+</div>
+```
+
+**2. Acciones de card/formulario**: pie de la card, alineadas a la derecha. El botón primario va último (más a la derecha).
+```blade
+<x-ui.card.footer class="justify-end gap-2">
+    <x-ui.button variant="ghost">Cancelar</x-ui.button>
+    <x-ui.button>Guardar</x-ui.button>
+</x-ui.card.footer>
+```
+
+**3. Acciones destructivas**: siempre separadas del grupo principal, con `state="destructive"`.
+```blade
+<x-ui.card.footer class="justify-between">
+    <x-ui.button variant="ghost" state="destructive">Eliminar</x-ui.button>
+    <div class="flex gap-2">
+        <x-ui.button variant="ghost">Cancelar</x-ui.button>
+        <x-ui.button>Guardar</x-ui.button>
+    </div>
+</x-ui.card.footer>
+```
+
+---
+
+### 11. Composición de pantallas — checklist
 
 Antes de dar una pantalla por completa, verificar:
 
@@ -241,6 +352,222 @@ Antes de dar una pantalla por completa, verificar:
 - [ ] Verificado en mobile (< 640px) y desktop (≥ 1280px)
 - [ ] Todos los tokens de color son semánticos (sin hardcoding)
 - [ ] Espaciados son múltiplos de 4px
+
+---
+
+## Branding — adaptar el sistema a un producto
+
+Cuando se pida adaptar el design system al branding de un producto, la regla principal es: **solo modificar `design-tokens.css`, nunca los componentes `ui/`**. Los componentes consumen tokens; cambiar los tokens propaga el cambio a toda la interfaz.
+
+### Las cinco palancas (en orden de impacto)
+
+**1. Color de marca**
+
+Tres pasos en `design-tokens.css`:
+
+```css
+/* Paso 1 — agregar paleta primitiva (sección 1, con la misma escala de 11 pasos) */
+--brand-600: oklch(0.540 0.230 260);   /* color principal de marca */
+/* ... resto de la escala --brand-50 a --brand-950 */
+
+/* Paso 2 — redirigir semánticos (sección 2, tema claro) */
+--primary:            var(--brand-600);
+--primary-foreground: var(--neutral-50);
+--ring:               var(--brand-500);
+
+/* Paso 3 — ajustar dark (sección 3, tema oscuro) */
+--primary:            var(--brand-400);
+--primary-foreground: var(--neutral-950);
+```
+
+**2. Tipografía**
+
+En `design-tokens.css` sección 4:
+```css
+--font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+```
+En `app.css`, antes de los imports:
+```css
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+```
+
+**3. Border radius** — solo una variable, el resto se deduce:
+
+```css
+/* sección 2 de design-tokens.css */
+--radius: 0.375rem;   /* 0: formal · 0.5rem: equilibrado (default) · 1rem: amigable */
+```
+
+**4. Movimiento:**
+
+```css
+/* sección 7 de design-tokens.css */
+--duration-fast:   75ms;    /* herramienta profesional */
+--duration-fast:   150ms;   /* producto consumer/delightful */
+```
+
+**5. Densidad** — en el `<body>` o layout raíz:
+
+```html
+<body data-density="compact">      <!-- dashboards, data-heavy -->
+<body data-density="comfortable">  <!-- consumer, onboarding -->
+```
+
+### Arquetipos frecuentes
+
+| Producto | Primary | Fuente | Radius | Densidad |
+|---|---|---|---|---|
+| Fintech / Banco | Neutral o azul oscuro | Inter | 4–6px | Compact |
+| SaaS B2B | Brand color moderado | Plus Jakarta | 8px | Default |
+| App consumer | Brand color vivo | DM Sans | 12–16px | Comfortable |
+| Dev tool | Neutral o verde | IBM Plex | 4px | Compact |
+
+### Lo que NO modificar al rebrandear
+
+- Los archivos en `components/ui/` — nunca
+- Los tokens de estado (`--destructive`, `--success`, `--warning`, `--info`) — tienen significado universal
+- La estructura de la paleta primitiva existente (Neutral, Red, Green, etc.) — solo agregar nuevas
+
+---
+
+## Arquitectura de carpetas — vistas y componentes
+
+### Estructura de `resources/views/`
+
+```
+resources/views/
+│
+├── components/
+│   ├── ui/                    ← design system puro (no modificar)
+│   ├── layouts/               ← layouts de la app (app.blade.php, auth.blade.php)
+│   ├── shared/                ← componentes usados en 2+ features
+│   │   ├── page-header.blade.php      → x-shared.page-header
+│   │   ├── empty-card.blade.php       → x-shared.empty-card
+│   │   └── stats/                     ← sub-carpeta cuando hay 3+ del mismo dominio
+│   │       ├── metric-card.blade.php  → x-shared.stats.metric-card
+│   │       └── trend-badge.blade.php  → x-shared.stats.trend-badge
+│   └── [feature]/             ← componentes específicos de una sola feature
+│       ├── members/
+│       │   └── row.blade.php          → x-members.row
+│       └── plans/
+│           └── price-card.blade.php   → x-plans.price-card
+│
+├── [feature]/                 ← páginas (espeja la estructura de URLs)
+│   ├── index.blade.php
+│   ├── show.blade.php
+│   ├── create.blade.php
+│   ├── edit.blade.php
+│   └── _partial.blade.php     ← fragmento interno (@include, sin @props)
+│
+├── auth/                      ← login, register, forgot-password
+├── errors/                    ← 404, 500, 503
+└── emails/                    ← plantillas de mail
+```
+
+### Tres niveles de componentes
+
+| Prefijo | Carpeta | Qué va ahí |
+|---|---|---|
+| `x-ui.*` | `components/ui/` | Primitivos del design system. Sin lógica de negocio. |
+| `x-shared.*` | `components/shared/` | Componentes reutilizados en 2+ features. |
+| `x-[feature].*` | `components/[feature]/` | Específicos de una sola feature. |
+
+### Regla de ciclo de vida de un componente
+
+1. **Nace** en `components/[feature]/` — específico de una página
+2. **Sube** a `components/shared/` — cuando una segunda feature lo necesita
+3. **Se agrupa** en `components/shared/[grupo]/` — cuando hay 3+ del mismo dominio
+
+Nunca al revés. Un componente no baja de `shared/` a `[feature]/`.
+
+### Componente vs. partial
+
+- **Componente** (`components/[carpeta]/nombre.blade.php`): necesita `@props`, se reutiliza, se invoca con `<x-*>`.
+- **Partial** (`[feature]/_nombre.blade.php`): fragmento de una sola vista, usa variables del contexto, se invoca con `@include`. Prefijo `_` para distinguirlo de páginas.
+
+### Ejemplo concreto — componente de feature
+
+```blade
+{{-- components/members/row.blade.php --}}
+@props(['member'])
+
+<x-ui.table.row>
+    <x-ui.table.cell>{{ $member->name }}</x-ui.table.cell>
+    <x-ui.table.cell>
+        <x-ui.badge :state="$member->active ? 'success' : 'destructive'" :subtle="true">
+            {{ $member->active ? 'Activo' : 'Inactivo' }}
+        </x-ui.badge>
+    </x-ui.table.cell>
+</x-ui.table.row>
+```
+
+Usado en la página:
+
+```blade
+{{-- members/index.blade.php --}}
+@foreach($members as $member)
+    <x-members.row :member="$member" />
+@endforeach
+```
+
+---
+
+## Alpine.js — reglas de uso
+
+### Cuándo usar cada patrón
+
+| Caso | Patrón |
+|---|---|
+| 1–2 propiedades reactivas, sin métodos | `x-data="{ open: false }"` inline |
+| Componente con métodos o 5+ líneas de JS | `Alpine.data('nombre', ...)` en `app.js` |
+| Estado compartido entre componentes no relacionados | `Alpine.store('nombre', ...)` en `app.js` |
+
+### Alpine.data() — patrón estándar para componentes complejos
+
+Los componentes Alpine se separan en archivos por feature bajo `resources/js/alpine/`:
+
+```
+resources/js/
+├── app.js                    ← stores + imports + Alpine.start()
+└── alpine/
+    ├── members-table.js
+    ├── invite-dialog.js
+    └── settings-form.js
+```
+
+Cada archivo exporta una función que recibe `Alpine` y registra sus componentes:
+
+```js
+// alpine/members-table.js
+export default (Alpine) => {
+    Alpine.data('memberTable', (initialIds) => ({
+        search: '',
+        visibleIds: initialIds,
+
+        get allSelected() { ... },
+        filterRows() { ... },
+    }))
+}
+```
+
+`app.js` solo importa y registra, sin lógica de componentes:
+
+```js
+import membersTable from './alpine/members-table'
+
+membersTable(Alpine)
+
+window.Alpine = Alpine
+Alpine.start()
+```
+
+Usar en el template pasando datos del servidor como argumento:
+
+```html
+<div x-data="memberTable(@js($ids))" x-effect="filterRows()">
+```
+
+**Ventajas sobre inline:** el template queda legible, el JS tiene syntax highlighting y es testeable, cada feature vive en su propio archivo.
 
 ---
 

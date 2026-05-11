@@ -2,12 +2,12 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Typography</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Sistema tipográfico del design system. Un único componente <code class="font-mono text-sm bg-muted px-1 rounded">x-ui.typography</code> con prop <code class="font-mono text-sm bg-muted px-1 rounded">as</code> para cada variante.</p>
+        <x-ui.typography as="h1" class="text-3xl">Typography</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Sistema tipográfico del design system. Un único componente <x-ui.typography as="code">x-ui.typography</x-ui.typography> con prop <x-ui.typography as="code">as</x-ui.typography> para cada variante.</x-ui.typography>
     </div>
 
     <section class="space-y-6">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Jerarquía de títulos</h2>
+        <x-ui.typography as="section-label">Jerarquía de títulos</x-ui.typography>
         <div class="space-y-4">
             <x-ui.typography as="h1">El conocimiento es poder</x-ui.typography>
             <x-ui.typography as="h2">Diseño con intención</x-ui.typography>
@@ -19,7 +19,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Texto de cuerpo</h2>
+        <x-ui.typography as="section-label">Texto de cuerpo</x-ui.typography>
         <x-ui.typography>
             Un sistema de diseño bien construido acelera el desarrollo y garantiza consistencia visual.
             Cada componente sigue las mismas reglas de espaciado, color y tipografía.
@@ -35,11 +35,11 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Inline y especiales</h2>
-        <p class="text-sm">
+        <x-ui.typography as="section-label">Inline y especiales</x-ui.typography>
+        <x-ui.typography as="p">
             Instalá el paquete con <x-ui.typography as="code" element="span">npm install @shadcn/ui</x-ui.typography> o usá
             <x-ui.typography as="code" element="span">pnpm add</x-ui.typography> si usás pnpm.
-        </p>
+        </x-ui.typography>
         <x-ui.typography as="blockquote">
             "La simplicidad es la sofisticación máxima." — Leonardo da Vinci
         </x-ui.typography>
@@ -54,7 +54,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Uso completo — artículo</h2>
+        <x-ui.typography as="section-label">Uso completo — artículo</x-ui.typography>
         <article class="max-w-prose space-y-4">
             <x-ui.typography as="h1">Introducción al design system</x-ui.typography>
             <x-ui.typography as="lead">

@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Radio Group</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Grupo de opciones mutuamente excluyentes. El estado se gestiona con Alpine.js y los inputs ocultos garantizan compatibilidad con formularios HTML.</p>
+        <x-ui.typography as="h1" class="text-3xl">Radio Group</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Grupo de opciones mutuamente excluyentes. El estado se gestiona con Alpine.js y los inputs ocultos garantizan compatibilidad con formularios HTML.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.radio-group name="plan" value="starter">
             <x-ui.radio-group.item value="starter" id="plan-starter">Starter</x-ui.radio-group.item>
             <x-ui.radio-group.item value="pro"     id="plan-pro">Pro</x-ui.radio-group.item>
@@ -20,7 +20,7 @@
 
     {{-- Sin selección inicial --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Sin selección inicial</h2>
+        <x-ui.typography as="section-label">Sin selección inicial</x-ui.typography>
         <x-ui.radio-group name="color">
             <x-ui.radio-group.item value="red"   id="color-red">Rojo</x-ui.radio-group.item>
             <x-ui.radio-group.item value="green" id="color-green">Verde</x-ui.radio-group.item>
@@ -32,7 +32,7 @@
 
     {{-- Horizontal --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Horizontal</h2>
+        <x-ui.typography as="section-label">Horizontal</x-ui.typography>
         <x-ui.radio-group name="size" value="md" class="flex flex-row flex-wrap gap-6">
             <x-ui.radio-group.item value="sm" id="size-sm">Small</x-ui.radio-group.item>
             <x-ui.radio-group.item value="md" id="size-md">Medium</x-ui.radio-group.item>
@@ -44,47 +44,47 @@
 
     {{-- Semantic states --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Semantic States</h2>
+        <x-ui.typography as="section-label">Semantic States</x-ui.typography>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
 
             {{-- Destructive --}}
             <div class="space-y-2">
-                <p class="text-sm font-medium">Destructive</p>
+                <x-ui.typography as="p" class="font-medium">Destructive</x-ui.typography>
                 <x-ui.radio-group name="state-destructive" value="a" state="destructive">
                     <x-ui.radio-group.item value="a" id="sd-a">Opción A</x-ui.radio-group.item>
                     <x-ui.radio-group.item value="b" id="sd-b">Opción B</x-ui.radio-group.item>
                 </x-ui.radio-group>
-                <p class="text-xs text-destructive">Seleccioná una opción válida para continuar.</p>
+                <x-ui.typography as="muted" class="text-xs text-destructive">Seleccioná una opción válida para continuar.</x-ui.typography>
             </div>
 
             {{-- Success --}}
             <div class="space-y-2">
-                <p class="text-sm font-medium">Success</p>
+                <x-ui.typography as="p" class="font-medium">Success</x-ui.typography>
                 <x-ui.radio-group name="state-success" value="a" state="success">
                     <x-ui.radio-group.item value="a" id="ss-a">Opción A</x-ui.radio-group.item>
                     <x-ui.radio-group.item value="b" id="ss-b">Opción B</x-ui.radio-group.item>
                 </x-ui.radio-group>
-                <p class="text-xs text-success">Selección confirmada correctamente.</p>
+                <x-ui.typography as="muted" class="text-xs text-success">Selección confirmada correctamente.</x-ui.typography>
             </div>
 
             {{-- Warning --}}
             <div class="space-y-2">
-                <p class="text-sm font-medium">Warning</p>
+                <x-ui.typography as="p" class="font-medium">Warning</x-ui.typography>
                 <x-ui.radio-group name="state-warning" value="b" state="warning">
                     <x-ui.radio-group.item value="a" id="sw-a">Opción A</x-ui.radio-group.item>
                     <x-ui.radio-group.item value="b" id="sw-b">Opción B</x-ui.radio-group.item>
                 </x-ui.radio-group>
-                <p class="text-xs text-warning">Esta opción requiere confirmación adicional.</p>
+                <x-ui.typography as="muted" class="text-xs text-warning">Esta opción requiere confirmación adicional.</x-ui.typography>
             </div>
 
             {{-- Info --}}
             <div class="space-y-2">
-                <p class="text-sm font-medium">Info</p>
+                <x-ui.typography as="p" class="font-medium">Info</x-ui.typography>
                 <x-ui.radio-group name="state-info" value="a" state="info">
                     <x-ui.radio-group.item value="a" id="si-a">Opción A</x-ui.radio-group.item>
                     <x-ui.radio-group.item value="b" id="si-b">Opción B</x-ui.radio-group.item>
                 </x-ui.radio-group>
-                <p class="text-xs text-info">El plan seleccionado incluye período de prueba.</p>
+                <x-ui.typography as="muted" class="text-xs text-info">El plan seleccionado incluye período de prueba.</x-ui.typography>
             </div>
 
         </div>
@@ -94,7 +94,7 @@
 
     {{-- En contexto — formulario --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — selección de plan</h2>
+        <x-ui.typography as="section-label">En contexto — selección de plan</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.header>
                 <x-ui.card.title>Elegí tu plan</x-ui.card.title>
@@ -117,8 +117,8 @@
                                 class="mt-0.5"
                             />
                             <div class="space-y-0.5">
-                                <p class="text-sm font-medium leading-none">{{ $plan['label'] }}</p>
-                                <p class="text-xs text-muted-foreground">{{ $plan['desc'] }}</p>
+                                <x-ui.typography as="small">{{ $plan['label'] }}</x-ui.typography>
+                                <x-ui.typography as="muted" class="text-xs">{{ $plan['desc'] }}</x-ui.typography>
                             </div>
                         </label>
                     @endforeach

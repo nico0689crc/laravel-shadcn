@@ -5,7 +5,7 @@
     Uso:
     <x-ui.input-group>
         <x-ui.input-group.addon>
-            <x-ui.icon name="search" />
+            <x-lucide-search />
         </x-ui.input-group.addon>
         <x-ui.input-group.input placeholder="Buscar..." />
     </x-ui.input-group>

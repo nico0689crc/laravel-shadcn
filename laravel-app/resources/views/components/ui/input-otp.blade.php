@@ -98,6 +98,12 @@ $stateRing = match($state) {
     {{-- Slots --}}
     <div class="flex items-center rounded-lg {{ $stateRing }}">
         @for($i = 0; $i < $length; $i++)
+            @php
+                $isGroupStart = $i === 0 || ($i > 0 && $i % 3 === 0);
+                $isGroupEnd   = $i === $length - 1 || ($i < $length - 1 && ($i + 1) % 3 === 0);
+                $slotRounded  = ($isGroupStart ? 'rounded-l-lg ' : '') . ($isGroupEnd ? 'rounded-r-lg' : '');
+                $slotBorder   = $isGroupStart ? 'border-l' : '';
+            @endphp
             <div
                 x-ref="slot{{ $i }}"
                 tabindex="{{ $disabled ? '-1' : '0' }}"
@@ -106,7 +112,7 @@ $stateRing = match($state) {
                 @blur="$refs['slot{{ $i }}'].dataset.active = 'false'"
                 :data-active="false"
                 :aria-invalid="@js($state === 'destructive') ? 'true' : undefined"
-                class="relative flex size-10 cursor-text select-none items-center justify-center border-y border-r border-input bg-background text-sm font-medium text-foreground transition-all first:rounded-l-lg first:border-l last:rounded-r-lg outline-none focus:z-10 focus:border-ring focus:ring-2 focus:ring-ring/50 data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-2 data-[active=true]:ring-ring/50 {{ $state === 'destructive' ? 'border-destructive-border aria-invalid:ring-destructive/30' : '' }}"
+                class="relative flex size-10 cursor-text select-none items-center justify-center border-y border-r border-input bg-background text-sm font-medium text-foreground transition-all {{ $slotBorder }} {{ $slotRounded }} outline-none focus:z-10 focus:border-ring focus:ring-2 focus:ring-ring/50 data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-2 data-[active=true]:ring-ring/50 {{ $state === 'destructive' ? 'border-destructive-border aria-invalid:ring-destructive/30' : '' }}"
             >
                 <span x-text="slots[{{ $i }}]"></span>
                 {{-- Cursor parpadeante cuando el slot está activo y vacío --}}

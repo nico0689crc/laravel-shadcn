@@ -2,6 +2,6 @@
     @if($slot->isNotEmpty())
         {{ $slot }}
     @else
-        <x-ui.icon name="chevron-right" class="size-3.5" />
+        <x-lucide-chevron-right class="size-3.5" />
     @endif
 </li>

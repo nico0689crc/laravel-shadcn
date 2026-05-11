@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Table</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Tabla semántica con API compositiva: Table → Header / Body / Footer → Row → Head / Cell. Las filas soportan estados semánticos y selección.</p>
+        <x-ui.typography as="h1" class="text-3xl">Table</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Tabla semántica con API compositiva: Table → Header / Body / Footer → Row → Head / Cell. Las filas soportan estados semánticos y selección.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.table>
             <x-ui.table.caption>Lista de facturas recientes.</x-ui.table.caption>
             <x-ui.table.header>
@@ -42,7 +42,7 @@
 
     {{-- Estados semánticos en filas --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos en filas</h2>
+        <x-ui.typography as="section-label">Estados semánticos en filas</x-ui.typography>
         <x-ui.table>
             <x-ui.table.header>
                 <x-ui.table.row>
@@ -85,7 +85,7 @@
 
     {{-- Con footer --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con footer</h2>
+        <x-ui.typography as="section-label">Con footer</x-ui.typography>
         <x-ui.table>
             <x-ui.table.header>
                 <x-ui.table.row>

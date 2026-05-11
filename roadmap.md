@@ -423,6 +423,322 @@ size     →  controla las dimensiones (height, padding, font-size)
 
 ---
 
+### Fase 9 — Páginas de ejemplo
+
+**Objetivo:** demostrar el sistema de diseño aplicado en contextos reales de SaaS. Cada página cubre combinaciones de componentes que en el showcase individual no se pueden ver juntos. Entre las 12 páginas se ejercita cada componente del catálogo al menos una vez.
+
+**Convenciones de cada página:**
+
+- Ruta dentro de `resources/views/` siguiendo la jerarquía de carpetas del CLAUDE.md
+- Los tres estados de UI definidos: skeleton de carga, empty-state, contenido real
+- Densidad seteada en el contenedor raíz con `data-density`
+- Un solo `<h1>` por página, tokens semánticos en todos los colores
+- Acciones: bottom-right en desktop, full-width en mobile
+
+---
+
+#### Resumen — tabla de páginas
+
+| # | Nombre | Ruta vista | Densidad | Componentes destacados |
+|---|---|---|---|---|
+| 1 | Dashboard principal | `dashboard/index` | compact | card, chart, data-table, badge, avatar, progress, skeleton |
+| 2 | Configuración con tabs | `settings/index` | default | tabs, form-field, switch, select, avatar, alert-dialog |
+| 3 | Lista con filtros avanzados | `members/index` | compact | input, combobox, data-table, checkbox, badge, pagination, sheet |
+| 4 | Flujo de onboarding multi-paso | `onboarding/index` | comfortable | progress, radio-group, toggle-group, checkbox, combobox, card |
+| 5 | Centro de notificaciones | `notifications/index` | default | tabs, badge, avatar, switch, empty-state, scroll-area, skeleton |
+| 6 | Perfil de usuario detallado | `users/show` | default | avatar, card, tabs, hover-card, collapsible, breadcrumb, badge |
+| 7 | Facturación y planes | `billing/index` | default | card, badge, progress, table, input-group, alert, dialog |
+| 8 | Editor de contenido | `posts/create` | default | textarea, combobox, select, switch, date-picker, dialog, sheet |
+| 9 | Analytics y reportes | `analytics/index` | compact | date-picker, chart, card, dropdown-menu, select, tooltip, table |
+| 10 | Flujo de autenticación | `auth/login` + `auth/register` + `auth/verify` | comfortable | form-field (estados), input-otp, alert, spinner, separator |
+| 11 | Búsqueda global / command palette | `search/index` | default | command, dialog, kbd, avatar, badge, empty-state |
+| 12 | Crear / editar producto | `products/create` | default | accordion, input-group, slider, radio-group, toggle, native-select |
+
+---
+
+#### Página 1 — Dashboard principal
+
+**Ruta:** `resources/views/dashboard/index.blade.php`
+**Layout:** `x-layouts.app` con sidebar
+**Densidad:** `compact`
+
+**Zonas:**
+
+- **Metric row** — 4 `x-ui.card` en grid 4 col: número grande (`typography as="h2"`), label muted, variación con `badge` (success/destructive según signo), mini `progress` de uso
+- **Gráfico principal** — `x-ui.card` full-width con `x-ui.chart` (área) y selector de período (`button-group` sm)
+- **Tabla de actividad reciente** — `x-ui.data-table` con `avatar` + nombre en celda, `badge` de estado, `dropdown-menu` de acciones por fila
+- **Panel lateral interno** — tareas pendientes con `x-ui.collapsible` por categoría, cada ítem con `checkbox` + texto + `badge` de prioridad
+- **Estado carga:** `x-ui.skeleton` reemplaza cada zona independientemente
+- **Breadcrumb:** `x-ui.breadcrumb` en header de página
+
+**Componentes nuevos que debuta:** `chart`, combinación `data-table` + `avatar` + `dropdown-menu` en misma fila
+
+---
+
+#### Página 2 — Configuración con tabs
+
+**Ruta:** `resources/views/settings/index.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `default`
+
+**Zonas (4 tabs):**
+
+- **Tab "Perfil"** — `avatar` grande con botón "Cambiar foto" superpuesto; form 2-col: nombre, apellido, bio (`textarea`), timezone (`select`), idioma (`native-select`); `card.footer` con acciones
+- **Tab "Notificaciones"** — grupos de `switch` separados por `separator` y `section-label`: Email / Push / Resumen semanal; descripción muted bajo cada switch
+- **Tab "Seguridad"** — change password (form 1-col, `input` type password × 3); `separator`; 2FA: `switch` que al activar abre un `dialog` con QR + `input-otp`; sessions list con `table` compacta + botón "Cerrar sesión" por fila
+- **Tab "Danger Zone"** — `card` con `border-destructive-border`; texto explicativo muted; botón "Eliminar cuenta" que abre `alert-dialog` con confirmación escribiendo el nombre del workspace
+
+**Componentes nuevos que debuta:** `input-otp` en contexto real (2FA), `alert-dialog` de acción destructiva
+
+---
+
+#### Página 3 — Lista con filtros avanzados
+
+**Ruta:** `resources/views/members/index.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `compact`
+
+**Zonas:**
+
+- **Toolbar** — `input` con `x-lucide-search` en slot leading (búsqueda en vivo Alpine); `combobox` de rol; `native-select` de estado; botón "Filtros" (abre `sheet` desde la derecha en mobile con filtros completos); count de resultados (`typography as="muted"`)
+- **Bulk actions bar** — aparece cuando hay `checkbox` seleccionados: count + `dropdown-menu` de acciones masivas (exportar, archivar, eliminar) con `alert-dialog` para la destructiva
+- **Tabla** — `data-table` con: `checkbox` en primera col, `avatar` + nombre + email, `badge` de rol, `badge` de estado (subtle success/destructive), fecha de ingreso, `dropdown-menu` de acciones por fila con sub-menú de permisos
+- **Paginación** — `x-ui.pagination` completa
+- **Estado vacío:** `x-ui.empty-state` con ícono users, título, descripción y botón "Invitar miembro"
+- **Estado carga:** `skeleton` de filas (5 filas de altura fija)
+
+**Componentes nuevos que debuta:** `sheet` como panel de filtros mobile, bulk actions con `checkbox` múltiple, `dropdown-menu` con `sub-trigger`
+
+---
+
+#### Página 4 — Flujo de onboarding multi-paso
+
+**Ruta:** `resources/views/onboarding/index.blade.php`
+**Layout:** `x-layouts.app` (sin sidebar, centrado)
+**Densidad:** `comfortable`
+
+**Zonas:**
+
+- **Header de progreso** — `progress` bar + indicadores de paso: número + label + línea conectora; estado visual por paso: completado (success), activo (primary), pendiente (muted)
+- **Paso 1 "Tu cuenta"** — grid 2-col: nombre, apellido; email full-width; password + confirm; `helper-text` de requisitos (lista de criterios con checkmarks Alpine)
+- **Paso 2 "Tu equipo"** — `radio-group` de rol (cards grandes con ícono, título y descripción — no radio clásico); `toggle-group` de tamaño de empresa
+- **Paso 3 "Integraciones"** — grid de cards de servicio con `checkbox` superpuesto; `combobox` de timezone; `switch` de notificaciones por email
+- **Paso 4 "Confirmación"** — resumen read-only en `card` sections: datos ingresados en cada paso con `section-label` separando grupos; ningún input, solo texto
+- **Footer fijo** — `flex-row-reverse`: "Finalizar" / "Siguiente" a la derecha, "Anterior" a la izquierda; en mobile full-width stack
+
+**Componentes nuevos que debuta:** `radio-group` en variante card visual, `toggle-group` como selector de opciones
+
+---
+
+#### Página 5 — Centro de notificaciones
+
+**Ruta:** `resources/views/notifications/index.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `default`
+
+**Zonas:**
+
+- **Page header** — h1 "Notificaciones" + badge count no leídas (destructive filled); botón "Marcar todo como leído" (ghost); `dropdown-menu` "Más opciones" (pausar notifs, preferencias)
+- **Tabs** — Todas / Sin leer / Menciones / Sistema; cada tab con `badge` de count secundario
+- **Lista agrupada** — `section-label` por grupo (Hoy / Ayer / Esta semana / Este mes); cada ítem: `avatar` + texto con mention en **bold** + timestamp muted + punto indicador si no leída; hover muestra acciones: marcar leída, archivar, silenciar
+- **Panel de preferencias** — `collapsible` al pie: lista de `switch` por tipo de notificación con `separator` entre grupos
+- **Estado vacío:** `empty-state` con ícono bell-off, título "Sin notificaciones", descripción muted
+- **Estado carga:** `skeleton` de 6 ítems con avatar + líneas de texto
+
+**Componentes nuevos que debuta:** `scroll-area` wrapeando la lista, `hover-card` sobre el avatar del emisor mostrando perfil rápido
+
+---
+
+#### Página 6 — Perfil de usuario detallado
+
+**Ruta:** `resources/views/users/show.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `default`
+
+**Zonas:**
+
+- **Breadcrumb** — Equipo › Miembros › {nombre}
+- **Hero section** — `avatar` xl (80px) + nombre (`typography as="h1"`) + cargo muted + `badge` de rol (outline) + `badge` de estado (subtle success/destructive); `button-group` de acciones: "Editar", "Enviar mensaje", `dropdown-menu` "Más"
+- **Stats row** — 3 `card` compactas: proyectos activos, tareas completadas, días en el equipo; número grande + label muted
+- **Tabs de contenido:**
+  - "Actividad" — timeline vertical: ícono de acción + texto + timestamp; `hover-card` en mentions de otros usuarios mostrando mini perfil
+  - "Permisos" — `accordion` por módulo (Proyectos, Facturación, Equipo, Config): dentro `checkbox` por permiso con descripción muted
+  - "Dispositivos" — `table` compacta: dispositivo + SO + última sesión + ubicación + botón revocar
+  - "Auditoría" — `data-table` con filtro de tipo de acción (`combobox`) + timestamps + IP
+
+**Componentes nuevos que debuta:** `hover-card` como mini-perfil en mentions, `breadcrumb` multi-nivel, `button-group` de acciones de perfil
+
+---
+
+#### Página 7 — Facturación y planes
+
+**Ruta:** `resources/views/billing/index.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `default`
+
+**Zonas:**
+
+- **Alert contextual** — `alert` state warning si trial expira en < 7 días: ícono automático + texto + botón "Actualizar plan" inline
+- **Plan actual** — `card` con `badge` "Plan Pro" (primary outline) en título; features en lista con ícono check-circle success; `progress` de 3 quotas (usuarios, proyectos, almacenamiento) con label y porcentaje; botón "Cambiar plan" (outline)
+- **Selector de planes** — toggle anual/mensual (`toggle-group`) + grid 3 col de `card` por plan: `badge` "Popular" (primary filled) en el recomendado; lista de features con check/x; botón "Seleccionar" que abre `dialog` de confirmación con detalle de cambio y cargo prorrateado
+- **Historial de facturas** — `table`: fecha / descripción / monto / estado (`badge` subtle) / acción descarga (`button` ghost size sm con ícono)
+- **Método de pago** — `card` con form inline: `input-group` (ícono tarjeta + número) + `input` mes/año en grid 2-col + `input` CVV + botón guardar; `badge` de tarjeta activa actual
+
+**Componentes nuevos que debuta:** `input-group` con addon de ícono en contexto de tarjeta de crédito, `dialog` de confirmación de cambio de plan con cálculo de prorate
+
+---
+
+#### Página 8 — Editor de contenido
+
+**Ruta:** `resources/views/posts/create.blade.php`
+**Layout:** `x-layouts.app` (sin max-width limitado, usa todo el ancho)
+**Densidad:** `default`
+
+**Zonas:**
+
+- **Toolbar superior** — `breadcrumb` (Contenido › Posts › Nuevo); `button-group` derecha: "Vista previa" (abre `dialog` fullscreen), "Guardar borrador" (ghost), "Publicar" (primary)
+- **Layout 2 columnas** — editor 65% + sidebar metadatos 35%
+- **Columna editor:**
+  - `input` xl para título (sin borde, font grande, placeholder "Título del artículo")
+  - `separator`
+  - `textarea` extendido (mínimo 400px de alto, auto-grow Alpine)
+- **Columna sidebar metadatos** — sticky al scroll:
+  - `select` de estado (Borrador / Revisión / Publicado)
+  - `switch` de visibilidad (Público / Privado)
+  - `date-picker` de fecha de publicación (con `calendar` desplegable)
+  - `combobox` multiselect de categorías
+  - `combobox` multiselect de tags con opción de crear nuevo inline
+  - `accordion` "SEO": inputs de meta-título, meta-descripción (`textarea` sm), URL slug (`input-group` con prefijo de dominio)
+- **En mobile** — sidebar se convierte en `sheet` activado por botón "Configuración" flotante
+
+**Componentes nuevos que debuta:** `date-picker` con `calendar` integrado, `combobox` con creación de items nuevos, `input-group` con addon de texto (prefijo URL)
+
+---
+
+#### Página 9 — Analytics y reportes
+
+**Ruta:** `resources/views/analytics/index.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `compact`
+
+**Zonas:**
+
+- **Toolbar** — `date-picker` de rango (con `calendar` dual mostrando 2 meses); `combobox` de canal (Todos / Email / Web / App); `combobox` de segmento; `dropdown-menu` "Exportar" (CSV, PDF, imagen) con `separator` entre formatos
+- **KPI row** — 4 `card` compactas: métrica principal grande + variación (`badge` success/destructive con flecha) + sparkline inline (`chart` mini de 30px de alto)
+- **Gráfico principal** — `card` full-width: `tabs` (Usuarios / Eventos / Conversión / Retención) en header + `chart` tipo line/bar; `button-group` sm derecha para cambiar tipo de gráfico; `tooltip` en puntos de datos
+- **Tabs de detalle** — Por canal / Por campaña / Por geografía
+  - Contenido: `table` con sort por columna + `badge` de variación en celdas numéricas
+- **Paginación** — `pagination` al pie de cada tabla de detalle
+
+**Componentes nuevos que debuta:** `date-picker` de rango con `calendar` dual, `chart` en variante sparkline, `tooltip` sobre elementos de gráfico
+
+---
+
+#### Página 10 — Flujo de autenticación
+
+**Ruta:** `resources/views/auth/login.blade.php` + `auth/register.blade.php` + `auth/verify.blade.php`
+**Layout:** `x-layouts.auth` (centrado, sin sidebar)
+**Densidad:** `comfortable`
+
+**Vista Login:**
+- Logo + `typography as="h1"` + lead muted
+- `alert` state destructive si hay error de credenciales (aparece sobre el form)
+- `form-field` email con estado destructive y helper-text si hay error de validación
+- `form-field` password con `input` que tiene trailing slot (ícono ojo toggle visible/oculto Alpine)
+- `checkbox` "Recordarme" con label clickeable
+- Link "¿Olvidaste tu contraseña?" (ghost, text-sm, alineado derecha)
+- `button` full-width "Iniciar sesión" con `spinner` inline cuando loading (Alpine)
+- `separator` con texto "o continuar con"
+- Botones OAuth: GitHub + Google (`button` variant outline full-width, ícono SVG + texto)
+
+**Vista Register:**
+- Grid 2-col: nombre, apellido; email full-width; password full-width; confirm password full-width
+- `alert` state destructive mostrando lista de errores de validación Laravel (`$errors->all()`)
+- `checkbox` de términos con link inline
+- `button` full-width "Crear cuenta"
+- Link "¿Ya tenés cuenta? Iniciar sesión"
+
+**Vista Verify OTP:**
+- `typography as="h2"` centrado + muted explicando que se envió código a {email}
+- `input-otp` centrado (6 dígitos, auto-avance Alpine)
+- Countdown "Reenviar en 0:45" con `spinner` → link "Reenviar código" cuando llega a 0
+- Link "Usar otro email" (ghost sm)
+
+**Componentes nuevos que debuta:** `input-otp` en flujo de verificación, `spinner` en botón de submit, estados de validación Laravel en form completo
+
+---
+
+#### Página 11 — Búsqueda global / command palette
+
+**Ruta:** `resources/views/search/index.blade.php` (también disponible como overlay desde cualquier página)
+**Layout:** `x-layouts.app` (la página) + overlay `dialog` (el modal)
+**Densidad:** `default`
+
+**Como overlay (`⌘K` desde cualquier página):**
+- `command.dialog` que abre un `dialog` de ancho medio
+- `command.input` con ícono search y placeholder "Buscar..."
+- Grupos con `command.group` + `command.label`:
+  - "Recientes" — ítems con `avatar` o ícono de tipo + título + subtítulo muted
+  - "Acciones rápidas" — ítems con ícono + label + `kbd` de shortcut al final
+  - "Páginas" — ítems con ícono de página + ruta muted
+  - "Miembros" — ítems con `avatar` + nombre + cargo
+- `command.empty` cuando no hay resultados: ícono search + "Sin resultados para «{query}»"
+- `command.separator` entre grupos
+- Footer del dialog: hints de `kbd` (↑↓ navegar, Enter seleccionar, Esc cerrar)
+
+**Como página dedicada:**
+- Page header: h1 "Buscar" + input grande de búsqueda
+- Resultados organizados por tipo con `section-label` + `badge` count por sección
+- `empty-state` completo cuando no hay resultados
+
+**Componentes nuevos que debuta:** `command` completo con todos sus sub-componentes, `kbd` en contexto de shortcuts de navegación
+
+---
+
+#### Página 12 — Crear / editar producto
+
+**Ruta:** `resources/views/products/create.blade.php`
+**Layout:** `x-layouts.app`
+**Densidad:** `default`
+
+**Zonas:**
+
+- **Breadcrumb** — Catálogo › Productos › Nuevo producto
+- **Sección "Información básica"** (siempre visible, fuera del accordion):
+  - `input` nombre del producto full-width
+  - `textarea` descripción
+  - `combobox` de categoría
+  - `native-select` de marca
+- **`accordion`** con 4 secciones colapsables:
+  - **"Precios y stock"** — `input-group` precio con addon `$` al inicio + `input` costo; grid 2-col: `input` stock inicial + `input` stock mínimo; `slider` de margen de ganancia con valor en tiempo real (Alpine); `switch` "Gestionar stock" que muestra/oculta campos de stock
+  - **"Variantes"** — `toggle-group` de tallas disponibles (XS/S/M/L/XL); `toggle-group` de colores (con dot de color); tabla inline de combinaciones variante-precio-stock
+  - **"SEO y visibilidad"** — `radio-group` vertical de visibilidad (Público / Solo con link / Privado); `input-group` URL slug con prefijo; `input` meta-título con contador de caracteres (Alpine); `textarea` meta-descripción con contador
+  - **"Configuración avanzada"** — `switch` "Producto digital" (cambia campos de envío); `switch` "Requiere dirección de envío"; `native-select` de clase impositiva; `input` peso + dimensiones en grid 4-col
+- **Card.footer sticky** — "Cancelar" (ghost) + "Guardar borrador" (outline) + "Publicar" (primary)
+
+**Componentes nuevos que debuta:** `accordion` como estructura de formulario multi-sección, `slider` con valor reactivo, `toggle-group` de selección visual (colores/tallas), `radio-group` en variante lista vertical
+
+---
+
+#### Estado de construcción — Fase 9
+
+| # | Página | Estado |
+|---|---|---|
+| 1 | Dashboard principal | ⬜ No iniciado |
+| 2 | Configuración con tabs | ⬜ No iniciado |
+| 3 | Lista con filtros avanzados | ⬜ No iniciado |
+| 4 | Flujo de onboarding multi-paso | ⬜ No iniciado |
+| 5 | Centro de notificaciones | ⬜ No iniciado |
+| 6 | Perfil de usuario detallado | ⬜ No iniciado |
+| 7 | Facturación y planes | ⬜ No iniciado |
+| 8 | Editor de contenido | ⬜ No iniciado |
+| 9 | Analytics y reportes | ⬜ No iniciado |
+| 10 | Flujo de autenticación (3 vistas) | ⬜ No iniciado |
+| 11 | Búsqueda global / command palette | ⬜ No iniciado |
+| 12 | Crear / editar producto | ⬜ No iniciado |
+
+---
+
 ## Criterios de Diseño Base
 
 > Estos criterios son la fuente de verdad para construir interfaces. Están replicados en `CLAUDE.md` para que el agente los aplique automáticamente.
@@ -618,11 +934,24 @@ Para cada componente nuevo:
 | Proyecto | Estado |
 |---|---|
 | `shadcn-inspector` | ⬜ No iniciado |
-| `laravel-app` | ⬜ No iniciado |
-| Design tokens | ⬜ No iniciado |
-| Componentes Fase 3 | ⬜ No iniciado |
-| Componentes Fase 4 | ⬜ No iniciado |
-| Componentes Fase 5 | ⬜ No iniciado |
-| Componentes Fase 6 | ⬜ No iniciado |
-| Componentes Fase 7 | ⬜ No iniciado |
-| Componentes Fase 8 | ⬜ No iniciado |
+| `laravel-app` | ✅ Base lista |
+| Design tokens | ✅ Completo |
+| Componentes Fase 3 — Primitivos | ✅ Completo |
+| Componentes Fase 4 — Superficies y overlays | ✅ Completo |
+| Componentes Fase 5 — Formularios avanzados | ✅ Completo |
+| Componentes Fase 6 — Navegación | ✅ Completo |
+| Componentes Fase 7 — Data display | ✅ Completo |
+| Componentes Fase 8 — Feedback | ✅ Completo |
+| **Páginas Fase 9** | **⬜ Planificado** |
+| — P01 Dashboard principal | ✅ Completo |
+| — P02 Configuración con tabs | ⬜ No iniciado |
+| — P03 Lista con filtros avanzados | ⬜ No iniciado |
+| — P04 Onboarding multi-paso | ⬜ No iniciado |
+| — P05 Centro de notificaciones | ⬜ No iniciado |
+| — P06 Perfil de usuario | ⬜ No iniciado |
+| — P07 Facturación y planes | ⬜ No iniciado |
+| — P08 Editor de contenido | ⬜ No iniciado |
+| — P09 Analytics y reportes | ⬜ No iniciado |
+| — P10 Flujo de autenticación | ✅ Completo |
+| — P11 Búsqueda / command palette | ⬜ No iniciado |
+| — P12 Crear / editar producto | ⬜ No iniciado |

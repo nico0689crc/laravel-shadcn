@@ -2,12 +2,12 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Aspect Ratio</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Wrapper que mantiene una relación de aspecto fija para imágenes, videos y embeds. Acepta cualquier valor numérico como <code class="font-mono text-sm">ratio</code>.</p>
+        <x-ui.typography as="h1" class="text-3xl">Aspect Ratio</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Wrapper que mantiene una relación de aspecto fija para imágenes, videos y embeds. Acepta cualquier valor numérico como <x-ui.typography as="code">ratio</x-ui.typography>.</x-ui.typography>
     </div>
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Ratios comunes</h2>
+        <x-ui.typography as="section-label">Ratios comunes</x-ui.typography>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             @foreach(['16/9' => '16:9', '4/3' => '4:3', '1/1' => '1:1', '9/16' => '9:16'] as $ratio => $label)
                 <div class="space-y-2">
@@ -16,7 +16,7 @@
                             {{ $label }}
                         </div>
                     </x-ui.aspect-ratio>
-                    <p class="text-xs text-center text-muted-foreground">ratio="{{ $ratio }}"</p>
+                    <x-ui.typography as="muted" class="text-xs text-center">ratio="{{ $ratio }}"</x-ui.typography>
                 </div>
             @endforeach
         </div>
@@ -25,7 +25,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con imagen</h2>
+        <x-ui.typography as="section-label">Con imagen</x-ui.typography>
         <div class="max-w-md">
             <x-ui.aspect-ratio ratio="16/9" class="rounded-lg overflow-hidden bg-muted">
                 <img

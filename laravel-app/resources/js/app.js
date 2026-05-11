@@ -1,6 +1,9 @@
 import Alpine from 'alpinejs'
+import membersTable from './alpine/members-table'
 import Chart from 'chart.js/auto'
+import { createIcons, icons } from 'lucide'
 window.Chart = Chart
+window.lucide = { createIcons, icons }
 
 // — Tema claro/oscuro ————————————————————————————————————————
 const savedTheme = localStorage.getItem('theme')
@@ -15,6 +18,16 @@ Alpine.store('theme', {
         this.dark = !this.dark
         document.documentElement.classList.toggle('dark', this.dark)
         localStorage.setItem('theme', this.dark ? 'dark' : 'light')
+    },
+})
+
+// — Alpine store: brand theme —————————————————————————————————
+Alpine.store('brandTheme', {
+    current: localStorage.getItem('brandTheme') || 'default',
+    apply(name) {
+        this.current = name
+        document.documentElement.setAttribute('data-theme', name)
+        localStorage.setItem('brandTheme', name)
     },
 })
 
@@ -82,6 +95,9 @@ Alpine.store('toast', {
         }
     },
 })
+
+// — Alpine.data: por feature ——————————————————————————————————
+membersTable(Alpine)
 
 window.Alpine = Alpine
 Alpine.start()

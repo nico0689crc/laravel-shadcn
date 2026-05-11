@@ -24,7 +24,7 @@ $positionClass = match($position) {
     x-data
     aria-live="polite"
     aria-atomic="false"
-    class="fixed {{ $positionClass }} z-[--z-toast] flex flex-col gap-2 w-full max-w-[420px] pointer-events-none px-4 sm:px-0"
+    class="fixed {{ $positionClass }} z-(--z-toast) flex flex-col gap-2 w-full max-w-[420px] pointer-events-none px-4 sm:px-0"
 >
     <template x-for="toast in $store.toast.toasts" :key="toast.id">
         <div
@@ -47,20 +47,19 @@ $positionClass = match($position) {
                 class="mt-0.5 shrink-0 size-4"
                 aria-hidden="true"
             >
-                <x-ui.icon name="check"          x-show="toast.variant === 'success'"     class="size-4" stroke-width="2.5" />
-                <x-ui.icon name="x"              x-show="toast.variant === 'destructive'" class="size-4" stroke-width="2.5" />
-                <x-ui.icon name="triangle-alert" x-show="toast.variant === 'warning'"     class="size-4" />
-                <x-ui.icon name="circle-info"    x-show="toast.variant === 'info'"        class="size-4" />
+                <x-lucide-check x-show="toast.variant === 'success'"     class="size-4" stroke-width="2.5" />
+                <x-lucide-x x-show="toast.variant === 'destructive'" class="size-4" stroke-width="2.5" />
+                <x-lucide-triangle-alert x-show="toast.variant === 'warning'"     class="size-4" />
+                <x-lucide-info x-show="toast.variant === 'info'"        class="size-4" />
             </span>
 
             {{-- Contenido --}}
             <div class="flex-1 min-w-0 space-y-1">
-                <p class="text-sm font-semibold leading-none" x-text="toast.message"></p>
-                <p
+                <x-ui.typography as="small" class="font-semibold" x-text="toast.message"></x-ui.typography>
+                <x-ui.typography as="muted"
                     x-show="toast.description"
                     x-text="toast.description"
-                    class="text-sm opacity-80"
-                ></p>
+                ></x-ui.typography>
                 <button
                     x-show="toast.action"
                     @click="toast.action?.onClick?.(); $store.toast.dismiss(toast.id)"
@@ -75,7 +74,7 @@ $positionClass = match($position) {
                 class="shrink-0 rounded-md p-0.5 opacity-60 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Cerrar"
             >
-                <x-ui.icon name="x" class="size-4" />
+                <x-lucide-x class="size-4" />
             </button>
         </div>
     </template>

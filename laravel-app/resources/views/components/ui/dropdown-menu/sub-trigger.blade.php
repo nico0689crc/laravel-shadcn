@@ -26,5 +26,5 @@
     ) }}
 >
     {{ $slot }}
-    <x-ui.icon name="chevron-right" class="ml-auto size-4" />
+    <x-lucide-chevron-right class="ml-auto size-4" />
 </div>

@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Skeleton</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Placeholder animado para estados de carga. Acepta cualquier clase Tailwind para moldear su forma.</p>
+        <x-ui.typography as="h1" class="text-3xl">Skeleton</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Placeholder animado para estados de carga. Acepta cualquier clase Tailwind para moldear su forma.</x-ui.typography>
     </div>
 
     {{-- Formas básicas --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Formas básicas</h2>
+        <x-ui.typography as="section-label">Formas básicas</x-ui.typography>
         <div class="space-y-3 max-w-xs">
             <x-ui.skeleton class="h-4 w-full" />
             <x-ui.skeleton class="h-4 w-3/4" />
@@ -20,7 +20,7 @@
 
     {{-- Avatar + texto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Avatar + texto</h2>
+        <x-ui.typography as="section-label">Avatar + texto</x-ui.typography>
         <div class="flex items-center gap-3 max-w-xs">
             <x-ui.skeleton class="size-10 rounded-full shrink-0" />
             <div class="flex-1 space-y-2">
@@ -34,7 +34,7 @@
 
     {{-- Card skeleton --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Card cargando</h2>
+        <x-ui.typography as="section-label">Card cargando</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.card>
                 <x-ui.card.header>
@@ -58,7 +58,7 @@
 
     {{-- Lista --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Lista cargando</h2>
+        <x-ui.typography as="section-label">Lista cargando</x-ui.typography>
         <div class="space-y-4 max-w-md">
             @foreach(range(1, 4) as $_)
                 <div class="flex items-center gap-3">

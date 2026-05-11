@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Data Table</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Tabla interactiva construida sobre <code class="text-xs bg-muted px-1 py-0.5 rounded">&lt;x-ui.data-table&gt;</code>. Incluye sorting, filtering, paginación client-side, selección de filas y visibilidad de columnas — sin JavaScript adicional.</p>
+        <x-ui.typography as="h1" class="text-3xl">Data Table</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Tabla interactiva construida sobre <x-ui.typography as="code">&lt;x-ui.data-table&gt;</x-ui.typography>. Incluye sorting, filtering, paginación client-side, selección de filas y visibilidad de columnas — sin JavaScript adicional.</x-ui.typography>
     </div>
 
     {{-- Ejemplo completo — pagos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Pagos recientes — todas las features</h2>
+        <x-ui.typography as="section-label">Pagos recientes — todas las features</x-ui.typography>
 
         @php
         $columns = [
@@ -57,7 +57,7 @@
 
     {{-- Sin paginación --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Sin paginación — solo sorting y filtering</h2>
+        <x-ui.typography as="section-label">Sin paginación — solo sorting y filtering</x-ui.typography>
 
         @php
         $simpleColumns = [

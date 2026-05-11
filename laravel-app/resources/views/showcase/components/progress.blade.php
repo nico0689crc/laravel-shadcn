@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Progress</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Barra de progreso accesible. Soporta tamaños sm/md/lg y estados semánticos que colorean el fill.</p>
+        <x-ui.typography as="h1" class="text-3xl">Progress</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Barra de progreso accesible. Soporta tamaños sm/md/lg y estados semánticos que colorean el fill.</x-ui.typography>
     </div>
 
     {{-- Valores --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Valores</h2>
+        <x-ui.typography as="section-label">Valores</x-ui.typography>
         <div class="space-y-4">
             <div class="space-y-1.5">
                 <div class="flex justify-between text-sm"><span>0%</span></div>
@@ -33,7 +33,7 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="space-y-4">
             <div class="space-y-1.5">
                 <span class="text-sm text-muted-foreground">sm</span>
@@ -54,7 +54,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="space-y-4">
             <div class="space-y-1.5">
                 <span class="text-sm text-muted-foreground">Default</span>
@@ -83,7 +83,7 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — subida de archivo</h2>
+        <x-ui.typography as="section-label">En contexto — subida de archivo</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.content class="pt-6 space-y-3">
                 <div class="flex items-center justify-between text-sm">
@@ -91,7 +91,7 @@
                     <span class="text-muted-foreground">78%</span>
                 </div>
                 <x-ui.progress :value="78" state="info" />
-                <p class="text-xs text-muted-foreground">3.2 MB de 4.1 MB</p>
+                <x-ui.typography as="muted" class="text-xs">3.2 MB de 4.1 MB</x-ui.typography>
             </x-ui.card.content>
         </x-ui.card>
     </section>

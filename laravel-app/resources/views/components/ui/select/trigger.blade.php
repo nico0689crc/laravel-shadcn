@@ -43,8 +43,6 @@ $chevronSize = match($size) {
     ) }}
 >
     {{ $slot }}
-    <x-ui.icon name="chevron-down"
-        class="shrink-0 text-muted-foreground transition-transform duration-200 {{ $chevronSize }}"
-        x-bind:class="open ? 'rotate-180' : ''"
-    />
+    <x-lucide-chevron-down class="shrink-0 text-muted-foreground transition-transform duration-200 {{ $chevronSize }}"
+        x-bind:class="open ? 'rotate-180' : ''" />
 </button>

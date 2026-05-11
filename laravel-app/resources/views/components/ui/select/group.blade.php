@@ -1,3 +1,3 @@
-<div role="group" {{ $attributes->twMerge('') }}>
+<div role="group flex" {{ $attributes->twMerge('flex flex-col gap-1') }}>
     {{ $slot }}
 </div>

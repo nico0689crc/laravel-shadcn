@@ -7,17 +7,17 @@
 $config = match($state) {
     'success'     => ['text' => 'text-success',     'icon' => 'circle-check'],
     'warning'     => ['text' => 'text-warning',     'icon' => 'triangle-alert'],
-    'info'        => ['text' => 'text-info',        'icon' => 'circle-info'],
+    'info'        => ['text' => 'text-info',        'icon' => 'info'],
     'destructive' => ['text' => 'text-destructive', 'icon' => 'circle-x'],
     default       => ['text' => 'text-muted-foreground', 'icon' => null],
 };
 @endphp
 
 @if($state || $message || $slot->isNotEmpty())
-    <p {{ $attributes->twMerge('flex items-center gap-1.5 text-xs', $config['text']) }}>
+    <x-ui.typography as="muted" element="p" {{ $attributes->twMerge('flex items-center gap-1.5 text-xs', $config['text']) }}>
         @if($config['icon'])
-            <x-ui.icon :name="$config['icon']" class="size-3.5 shrink-0" />
+            <x-dynamic-component :component="'lucide-' . ($config['icon'])" class="size-3.5 shrink-0" />
         @endif
         {{ $message ?? $slot }}
-    </p>
+    </x-ui.typography>
 @endif

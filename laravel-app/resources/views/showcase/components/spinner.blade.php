@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Spinner</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Indicador de carga circular. Soporta tamaños sm/md/lg y hereda el color del texto del padre o acepta color explícito.</p>
+        <x-ui.typography as="h1" class="text-3xl">Spinner</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Indicador de carga circular. Soporta tamaños sm/md/lg y hereda el color del texto del padre o acepta color explícito.</x-ui.typography>
     </div>
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-end">
             <div class="flex flex-col items-center gap-2">
                 <x-ui.spinner size="sm" />
@@ -29,7 +29,7 @@
 
     {{-- Colores --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Colores (hereda text-color)</h2>
+        <x-ui.typography as="section-label">Colores (hereda text-color)</x-ui.typography>
         <div class="flex flex-wrap gap-6 items-center">
             <x-ui.spinner class="text-foreground" />
             <x-ui.spinner class="text-muted-foreground" />
@@ -45,7 +45,7 @@
 
     {{-- En botones --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En botones</h2>
+        <x-ui.typography as="section-label">En botones</x-ui.typography>
         <div class="flex flex-wrap gap-3 items-center">
             <x-ui.button disabled>
                 <x-ui.spinner size="sm" class="text-primary-foreground opacity-70" />
@@ -66,7 +66,7 @@
 
     {{-- Loading overlay --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Overlay de carga</h2>
+        <x-ui.typography as="section-label">Overlay de carga</x-ui.typography>
         <div class="relative max-w-sm">
             <x-ui.card>
                 <x-ui.card.content class="pt-6 h-32 flex items-center justify-center">

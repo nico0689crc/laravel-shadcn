@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Pagination</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Navegación entre páginas. API compositiva: Pagination → PaginationContent → PaginationItem / PaginationPrevious / PaginationNext / PaginationLink / PaginationEllipsis.</p>
+        <x-ui.typography as="h1" class="text-3xl">Pagination</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Navegación entre páginas. API compositiva: Pagination → PaginationContent → PaginationItem / PaginationPrevious / PaginationNext / PaginationLink / PaginationEllipsis.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.pagination>
             <x-ui.pagination.content>
                 <x-ui.pagination.item>
@@ -34,7 +34,7 @@
 
     {{-- Con elipsis --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con elipsis</h2>
+        <x-ui.typography as="section-label">Con elipsis</x-ui.typography>
         <x-ui.pagination>
             <x-ui.pagination.content>
                 <x-ui.pagination.item>
@@ -66,7 +66,7 @@
 
     {{-- Primera página (prev deshabilitado) --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Primera página — Anterior deshabilitado</h2>
+        <x-ui.typography as="section-label">Primera página — Anterior deshabilitado</x-ui.typography>
         <x-ui.pagination>
             <x-ui.pagination.content>
                 <x-ui.pagination.item>
@@ -98,7 +98,7 @@
 
     {{-- En contexto — tabla paginada --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — tabla paginada</h2>
+        <x-ui.typography as="section-label">En contexto — tabla paginada</x-ui.typography>
         <x-ui.card>
             <x-ui.card.header>
                 <x-ui.card.title>Usuarios</x-ui.card.title>
@@ -120,7 +120,7 @@
                 </div>
             </x-ui.card.content>
             <x-ui.card.footer class="flex items-center justify-between">
-                <p class="text-sm text-muted-foreground">Página 4 de 25</p>
+                <x-ui.typography as="muted">Página 4 de 25</x-ui.typography>
                 <x-ui.pagination class="mx-0 w-auto justify-end">
                     <x-ui.pagination.content>
                         <x-ui.pagination.item>

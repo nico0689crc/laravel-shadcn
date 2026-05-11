@@ -17,7 +17,7 @@
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
         {{ $attributes->twMerge(
-            'fixed z-[--z-popover] w-64 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10'
+            'fixed z-(--z-popover) w-64 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10'
         ) }}
     >
         {{ $slot }}

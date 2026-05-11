@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Select</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Select accesible con dropdown customizado. API compositiva que refleja shadcn: Trigger, Value, Content, Group, Label, Item, Separator. Soporta teclado (↑↓ Enter Esc), grupos y opciones deshabilitadas.</p>
+        <x-ui.typography as="h1" class="text-3xl">Select</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Select accesible con dropdown customizado. API compositiva que refleja shadcn: Trigger, Value, Content, Group, Label, Item, Separator. Soporta teclado (↑↓ Enter Esc), grupos y opciones deshabilitadas.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.select class="w-[200px]">
             <x-ui.select.trigger>
                 <x-ui.select.value placeholder="Seleccioná..." />
@@ -27,7 +27,7 @@
 
     {{-- Con valor inicial --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con valor seleccionado</h2>
+        <x-ui.typography as="section-label">Con valor seleccionado</x-ui.typography>
         <x-ui.select name="country" value="ar" class="w-[220px]">
             <x-ui.select.trigger>
                 <x-ui.select.value placeholder="Seleccioná un país..." />
@@ -48,7 +48,7 @@
 
     {{-- Tamaños --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tamaños</h2>
+        <x-ui.typography as="section-label">Tamaños</x-ui.typography>
         <div class="space-y-3 max-w-xs">
             <x-ui.form-field>
                 <x-ui.label>Small (sm)</x-ui.label>
@@ -96,7 +96,7 @@
 
     {{-- Grupos y separador --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Grupos con SelectLabel y SelectSeparator</h2>
+        <x-ui.typography as="section-label">Grupos con SelectLabel y SelectSeparator</x-ui.typography>
         <x-ui.select class="w-[240px]">
             <x-ui.select.trigger>
                 <x-ui.select.value placeholder="Elegí una fruta..." />
@@ -123,7 +123,7 @@
 
     {{-- Opciones deshabilitadas --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Opciones deshabilitadas</h2>
+        <x-ui.typography as="section-label">Opciones deshabilitadas</x-ui.typography>
         <x-ui.select class="w-[240px]">
             <x-ui.select.trigger>
                 <x-ui.select.value placeholder="Elegí un plan..." />
@@ -140,7 +140,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos en el trigger</h2>
+        <x-ui.typography as="section-label">Estados semánticos en el trigger</x-ui.typography>
         <div class="space-y-4 max-w-xs">
             <x-ui.form-field state="destructive" message="Seleccioná un rol válido.">
                 <x-ui.label state="destructive">Rol</x-ui.label>
@@ -185,7 +185,7 @@
 
     {{-- Deshabilitado --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Trigger deshabilitado</h2>
+        <x-ui.typography as="section-label">Trigger deshabilitado</x-ui.typography>
         <x-ui.select value="pro" class="w-[200px]">
             <x-ui.select.trigger disabled>
                 <x-ui.select.value />
@@ -200,7 +200,7 @@
 
     {{-- En contexto --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">En contexto — formulario</h2>
+        <x-ui.typography as="section-label">En contexto — formulario</x-ui.typography>
         <x-ui.card class="max-w-sm">
             <x-ui.card.header>
                 <x-ui.card.title>Nuevo miembro</x-ui.card.title>

@@ -7,8 +7,7 @@
     aria-haspopup="menu"
     :aria-expanded="open.toString()"
     :data-state="open ? 'open' : 'closed'"
-    class="inline-block"
-    {{ $attributes }}
+    {{ $attributes->merge(['class' => 'inline-block']) }}
 >
     {{ $slot }}
 </div>

@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Card</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Contenedor de superficie con sombra sutil. Compuesto por sub-elementos: header, title, description, content y footer.</p>
+        <x-ui.typography as="h1" class="text-3xl">Card</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Contenedor de superficie con sombra sutil. Compuesto por sub-elementos: header, title, description, content y footer.</x-ui.typography>
     </div>
 
     {{-- Anatomía completa --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Anatomía completa</h2>
+        <x-ui.typography as="section-label">Anatomía completa</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.card>
                 <x-ui.card.header>
@@ -16,7 +16,7 @@
                     <x-ui.card.description>Descripción breve que contextualiza el contenido.</x-ui.card.description>
                 </x-ui.card.header>
                 <x-ui.card.content>
-                    <p class="text-sm text-muted-foreground">El contenido principal va aquí. Puede incluir texto, formularios, imágenes u otros componentes.</p>
+                    <x-ui.typography as="muted">El contenido principal va aquí. Puede incluir texto, formularios, imágenes u otros componentes.</x-ui.typography>
                 </x-ui.card.content>
                 <x-ui.card.footer class="gap-3">
                     <x-ui.button size="sm">Guardar</x-ui.button>
@@ -30,7 +30,7 @@
 
     {{-- Solo header + content --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Header + content</h2>
+        <x-ui.typography as="section-label">Header + content</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.card>
                 <x-ui.card.header>
@@ -61,7 +61,7 @@
 
     {{-- Grilla de cards --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Grilla</h2>
+        <x-ui.typography as="section-label">Grilla</x-ui.typography>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach([
                 ['title' => 'Ingresos', 'value' => '$24,500', 'delta' => '+12%', 'state' => 'success'],
@@ -85,11 +85,11 @@
 
     {{-- Card sin header --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Solo content</h2>
+        <x-ui.typography as="section-label">Solo content</x-ui.typography>
         <div class="max-w-sm">
             <x-ui.card>
                 <x-ui.card.content class="pt-6">
-                    <p class="text-sm text-muted-foreground">Una card simple sin header, solo contenido directo.</p>
+                    <x-ui.typography as="muted">Una card simple sin header, solo contenido directo.</x-ui.typography>
                 </x-ui.card.content>
             </x-ui.card>
         </div>

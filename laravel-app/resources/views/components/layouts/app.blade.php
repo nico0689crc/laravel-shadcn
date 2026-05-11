@@ -22,7 +22,7 @@
 <body class="min-h-screen bg-background text-foreground antialiased">
 
     {{-- Topbar --}}
-    <header class="sticky top-0 z-[--z-sticky] border-b border-border bg-background/80 backdrop-blur-sm">
+    <header class="sticky top-0 z-(--z-sticky) border-b border-border bg-background/80 backdrop-blur-sm">
         <div class="mx-auto max-w-[--container-xl] px-4 sm:px-6 lg:px-8">
             <div class="flex h-14 items-center justify-between gap-4">
 

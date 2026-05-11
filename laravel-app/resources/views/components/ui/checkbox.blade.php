@@ -32,14 +32,12 @@ $uncheckedClass = match($state) {
     :class="checked ? '{{ $checkedClass }}' : '{{ $uncheckedClass }}'"
     {{ $attributes->twMerge('size-4 shrink-0 rounded border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center cursor-pointer') }}
 >
-    <x-ui.icon name="check"
-        x-show="checked"
+    <x-lucide-check x-show="checked"
         x-transition:enter="transition ease-out duration-75"
         x-transition:enter-start="opacity-0 scale-50"
         x-transition:enter-end="opacity-100 scale-100"
         class="size-3"
-        stroke-width="3"
-    />
+        stroke-width="3" />
     @if($name)
         <input
             type="checkbox"

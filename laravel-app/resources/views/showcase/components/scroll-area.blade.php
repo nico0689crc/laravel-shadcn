@@ -2,12 +2,12 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Scroll Area</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Contenedor con scrollbar personalizado. Soporta scroll vertical, horizontal o ambos.</p>
+        <x-ui.typography as="h1" class="text-3xl">Scroll Area</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Contenedor con scrollbar personalizado. Soporta scroll vertical, horizontal o ambos.</x-ui.typography>
     </div>
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Vertical</h2>
+        <x-ui.typography as="section-label">Vertical</x-ui.typography>
         <x-ui.scroll-area class="h-72 w-80 rounded-lg border border-border p-4">
             <div class="space-y-4">
                 @foreach(range(1, 20) as $i)
@@ -16,8 +16,8 @@
                             <x-ui.avatar.fallback class="text-xs">U{{ $i }}</x-ui.avatar.fallback>
                         </x-ui.avatar>
                         <div>
-                            <p class="text-sm font-medium">Usuario {{ $i }}</p>
-                            <p class="text-xs text-muted-foreground">usuario{{ $i }}@ejemplo.com</p>
+                            <x-ui.typography as="p" class="font-medium">Usuario {{ $i }}</x-ui.typography>
+                            <x-ui.typography as="muted" class="text-xs">usuario{{ $i }}@ejemplo.com</x-ui.typography>
                         </div>
                     </div>
                 @endforeach
@@ -28,7 +28,7 @@
     <x-ui.separator />
 
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Horizontal</h2>
+        <x-ui.typography as="section-label">Horizontal</x-ui.typography>
         <x-ui.scroll-area orientation="horizontal" class="w-96 rounded-lg border border-border p-4">
             <div class="flex gap-4" style="width: max-content">
                 @foreach(['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'] as $month)

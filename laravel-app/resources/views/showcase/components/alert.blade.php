@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-md] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Alert</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Mensaje contextual no interruptivo. El ícono debe ser el primer hijo del componente para que los selectores CSS de posicionamiento funcionen correctamente.</p>
+        <x-ui.typography as="h1" class="text-3xl">Alert</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Mensaje contextual no interruptivo. El ícono debe ser el primer hijo del componente para que los selectores CSS de posicionamiento funcionen correctamente.</x-ui.typography>
     </div>
 
     {{-- Default --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Default</h2>
+        <x-ui.typography as="section-label">Default</x-ui.typography>
         <x-ui.alert>
             <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
             <x-ui.alert.title>Heads up!</x-ui.alert.title>
@@ -20,7 +20,7 @@
 
     {{-- Estados semánticos --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Estados semánticos</h2>
+        <x-ui.typography as="section-label">Estados semánticos</x-ui.typography>
         <div class="space-y-3">
 
             <x-ui.alert state="destructive">
@@ -54,7 +54,7 @@
 
     {{-- Sin ícono --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Sin ícono</h2>
+        <x-ui.typography as="section-label">Sin ícono</x-ui.typography>
         <div class="space-y-3">
             <x-ui.alert state="warning">
                 <x-ui.alert.title>Modo de solo lectura</x-ui.alert.title>
@@ -71,7 +71,7 @@
 
     {{-- Solo descripción --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Solo descripción</h2>
+        <x-ui.typography as="section-label">Solo descripción</x-ui.typography>
         <x-ui.alert state="destructive">
             <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <x-ui.alert.description>La contraseña debe tener al menos 8 caracteres.</x-ui.alert.description>

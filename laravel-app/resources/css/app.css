@@ -8,13 +8,10 @@
 @source '../**/*.js';
 
 /* Clases aplicadas dinámicamente desde Alpine (no detectables por el scanner) */
-@source inline("
-  bg-background border-border text-foreground
-  bg-destructive border-destructive text-destructive-foreground
-  bg-success border-success text-success-foreground
-  bg-warning border-warning text-warning-foreground
-  bg-info border-info text-info-foreground
-");
+@source inline("bg-background border-border text-foreground bg-destructive border-destructive text-destructive-foreground bg-success border-success text-success-foreground bg-warning border-warning text-warning-foreground bg-info border-info text-info-foreground");
+
+/* Clases dentro de <template x-teleport> — el scanner no las alcanza */
+@source inline("z-(--z-tooltip)");
 
 /* ─────────────────────────────────────────────────────────────
    Mapeo de CSS variables → utilidades Tailwind
@@ -173,4 +170,71 @@
             scroll-behavior: smooth;
         }
     }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Sidebar — collapse behavior
+   Las clases dinámicas de Alpine/PHP no son detectables por el
+   scanner de Tailwind v4, así que el collapse se maneja con CSS
+   puro usando data attributes.
+───────────────────────────────────────────────────────────── */
+
+/* Pre-ocultar en mobile antes de que Alpine inicialice para evitar el flash de apertura */
+@media (max-width: 1023px) {
+    [data-sidebar]:not([data-initialized]) {
+        transform: translateX(-100%);
+        transition: none;
+    }
+}
+
+[data-sidebar] {
+    width: var(--sidebar-width);
+}
+
+/* ── offcanvas: sidebar desaparece completamente en desktop ── */
+@media (min-width: 1024px) {
+    [data-sidebar][data-collapsible="offcanvas"][data-collapsed="true"] {
+        width: 0;
+    }
+}
+
+/* ── icon: sidebar colapsa a rail de íconos ── */
+
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] {
+    width: var(--sidebar-width-icon);
+}
+
+/* Shrink menu buttons to 2rem square */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-menu-button] {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 0.5rem !important;
+    justify-content: center;
+}
+
+/* Hide text spans — SVG icons remain visible */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-menu-button] > span:not(.sr-only) {
+    display: none;
+}
+
+/* Collapse group labels (slide up + fade) */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-group-label] {
+    margin-top: -2rem;
+    opacity: 0;
+}
+
+/* Hide sub-menus and disabled "pronto" items */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-menu-sub],
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-menu-item] > span {
+    display: none;
+}
+
+/* Header: hide text, keep the icon (first child) */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-header] > * > *:not(:first-child) {
+    display: none;
+}
+
+/* Footer: hide entirely */
+[data-sidebar][data-collapsible="icon"][data-collapsed="true"] [data-sidebar-footer] {
+    display: none;
 }

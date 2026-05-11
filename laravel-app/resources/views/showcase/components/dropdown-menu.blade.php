@@ -2,13 +2,13 @@
 <div class="mx-auto max-w-[--container-lg] px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
     <div>
-        <h1 class="text-3xl font-bold tracking-tight">Dropdown Menu</h1>
-        <p class="mt-1 text-muted-foreground max-w-prose">Menú contextual anclado a un trigger. Soporta ítems, grupos, labels, separadores, checkboxes, radios, atajos de teclado y sub-menús.</p>
+        <x-ui.typography as="h1" class="text-3xl">Dropdown Menu</x-ui.typography>
+        <x-ui.typography as="muted" class="mt-1 max-w-prose">Menú contextual anclado a un trigger. Soporta ítems, grupos, labels, separadores, checkboxes, radios, atajos de teclado y sub-menús.</x-ui.typography>
     </div>
 
     {{-- ── Básico ──────────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Básico</h2>
+        <x-ui.typography as="section-label">Básico</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Abrir menú</x-ui.button>
@@ -27,7 +27,7 @@
 
     {{-- ── Con íconos y shortcuts ──────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con íconos y atajos</h2>
+        <x-ui.typography as="section-label">Con íconos y atajos</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Mi cuenta</x-ui.button>
@@ -37,30 +37,30 @@
                 <x-ui.dropdown-menu.separator />
                 <x-ui.dropdown-menu.group>
                     <x-ui.dropdown-menu.item>
-                        <x-ui.icon name="eye" />
+                        <x-lucide-eye />
                         Perfil
                         <x-ui.dropdown-menu.shortcut>⇧⌘P</x-ui.dropdown-menu.shortcut>
                     </x-ui.dropdown-menu.item>
                     <x-ui.dropdown-menu.item>
-                        <x-ui.icon name="copy" />
+                        <x-lucide-copy />
                         Facturación
                         <x-ui.dropdown-menu.shortcut>⌘B</x-ui.dropdown-menu.shortcut>
                     </x-ui.dropdown-menu.item>
                     <x-ui.dropdown-menu.item>
-                        <x-ui.icon name="moon" />
+                        <x-lucide-moon />
                         Configuración
                         <x-ui.dropdown-menu.shortcut>⌘S</x-ui.dropdown-menu.shortcut>
                     </x-ui.dropdown-menu.item>
                 </x-ui.dropdown-menu.group>
                 <x-ui.dropdown-menu.separator />
                 <x-ui.dropdown-menu.item>
-                    <x-ui.icon name="plus" />
+                    <x-lucide-plus />
                     Nuevo equipo
                     <x-ui.dropdown-menu.shortcut>⌘T</x-ui.dropdown-menu.shortcut>
                 </x-ui.dropdown-menu.item>
                 <x-ui.dropdown-menu.separator />
                 <x-ui.dropdown-menu.item variant="destructive">
-                    <x-ui.icon name="x" />
+                    <x-lucide-x />
                     Cerrar sesión
                     <x-ui.dropdown-menu.shortcut>⇧⌘Q</x-ui.dropdown-menu.shortcut>
                 </x-ui.dropdown-menu.item>
@@ -72,7 +72,7 @@
 
     {{-- ── Checkboxes ──────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Checkbox items</h2>
+        <x-ui.typography as="section-label">Checkbox items</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Ver opciones</x-ui.button>
@@ -97,7 +97,7 @@
 
     {{-- ── Radio group ─────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Radio group</h2>
+        <x-ui.typography as="section-label">Radio group</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Posición del panel</x-ui.button>
@@ -118,24 +118,24 @@
 
     {{-- ── Sub-menú ─────────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Con sub-menú</h2>
+        <x-ui.typography as="section-label">Con sub-menú</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Opciones</x-ui.button>
             </x-ui.dropdown-menu.trigger>
             <x-ui.dropdown-menu.content class="w-52">
                 <x-ui.dropdown-menu.item>
-                    <x-ui.icon name="eye" />
+                    <x-lucide-eye />
                     Perfil
                 </x-ui.dropdown-menu.item>
                 <x-ui.dropdown-menu.item>
-                    <x-ui.icon name="copy" />
+                    <x-lucide-copy />
                     Facturación
                 </x-ui.dropdown-menu.item>
                 <x-ui.dropdown-menu.separator />
                 <x-ui.dropdown-menu.sub>
                     <x-ui.dropdown-menu.sub-trigger>
-                        <x-ui.icon name="plus" />
+                        <x-lucide-plus />
                         Invitar usuarios
                     </x-ui.dropdown-menu.sub-trigger>
                     <x-ui.dropdown-menu.sub-content>
@@ -147,7 +147,7 @@
                 </x-ui.dropdown-menu.sub>
                 <x-ui.dropdown-menu.separator />
                 <x-ui.dropdown-menu.item variant="destructive">
-                    <x-ui.icon name="x" />
+                    <x-lucide-x />
                     Eliminar equipo
                 </x-ui.dropdown-menu.item>
             </x-ui.dropdown-menu.content>
@@ -158,7 +158,7 @@
 
     {{-- ── Items deshabilitados ─────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Items deshabilitados</h2>
+        <x-ui.typography as="section-label">Items deshabilitados</x-ui.typography>
         <x-ui.dropdown-menu>
             <x-ui.dropdown-menu.trigger>
                 <x-ui.button variant="outline">Acciones</x-ui.button>
@@ -177,7 +177,7 @@
 
     {{-- ── Alineaciones ─────────────────────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Alineaciones</h2>
+        <x-ui.typography as="section-label">Alineaciones</x-ui.typography>
         <div class="flex flex-wrap gap-4">
             @foreach(['start', 'center', 'end'] as $align)
                 <x-ui.dropdown-menu>
@@ -198,7 +198,7 @@
 
     {{-- ── Como menú de fila de tabla ───────────────────────────────────────── --}}
     <section class="space-y-4">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Uso típico — acciones de fila</h2>
+        <x-ui.typography as="section-label">Uso típico — acciones de fila</x-ui.typography>
         <div class="rounded-lg border border-border overflow-hidden">
             @foreach(['Ana García', 'Luis Pérez', 'María López'] as $name)
                 <div class="flex items-center justify-between px-4 py-3 border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
@@ -211,7 +211,7 @@
                     <x-ui.dropdown-menu>
                         <x-ui.dropdown-menu.trigger>
                             <x-ui.button variant="ghost" size="icon" class="size-8">
-                                <x-ui.icon name="dots-horizontal" solid class="size-4" />
+                                <x-lucide-ellipsis class="size-4" />
                             </x-ui.button>
                         </x-ui.dropdown-menu.trigger>
                         <x-ui.dropdown-menu.content align="end">

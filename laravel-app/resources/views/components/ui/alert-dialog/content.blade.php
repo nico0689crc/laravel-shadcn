@@ -9,7 +9,7 @@ $sizeClass = $size === 'sm' ? 'max-w-xs' : 'max-w-xs sm:max-w-sm';
         x-show="open"
         x-cloak
         @keydown.escape.window="open = false"
-        class="fixed inset-0 z-[--z-modal] flex items-center justify-center p-4"
+        class="fixed inset-0 z-(--z-modal) flex items-center justify-center p-4"
         role="alertdialog"
         aria-modal="true"
     >

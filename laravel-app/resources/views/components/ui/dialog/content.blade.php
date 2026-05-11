@@ -11,7 +11,7 @@ $sizeClass = ['sm' => 'max-w-sm', 'lg' => 'max-w-2xl', 'xl' => 'max-w-4xl'][$siz
     <div
         x-show="open"
         @keydown.escape.window="open = false"
-        class="fixed inset-0 z-[--z-modal] flex items-center justify-center p-4"
+        class="fixed inset-0 z-(--z-modal) flex items-center justify-center p-4"
         x-cloak
     >
         {{-- Overlay --}}
@@ -47,7 +47,7 @@ $sizeClass = ['sm' => 'max-w-sm', 'lg' => 'max-w-2xl', 'xl' => 'max-w-4xl'][$siz
                     class="absolute right-4 top-4 flex size-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors z-10"
                     aria-label="Cerrar"
                 >
-                    <x-ui.icon name="x" class="size-4" />
+                    <x-lucide-x class="size-4" />
                 </button>
             @endif
 

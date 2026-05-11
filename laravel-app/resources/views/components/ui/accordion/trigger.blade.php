@@ -17,9 +17,7 @@
         {{ $attributes->twMerge('flex w-full flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50') }}
     >
         {{ $slot }}
-        <x-ui.icon name="chevron-down"
-            class="size-4 shrink-0 text-muted-foreground transition-transform duration-200"
-            x-bind:class="isOpen(itemValue) ? 'rotate-180' : ''"
-        />
+        <x-lucide-chevron-down class="size-4 shrink-0 text-muted-foreground transition-transform duration-200"
+            x-bind:class="isOpen(itemValue) ? 'rotate-180' : ''" />
     </button>
 </h3>
